@@ -1,86 +1,187 @@
-import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  UnauthorizedException,
+  BadRequestException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UserService } from 'src/user/user.service';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { MailService } from 'src/mail/mail.service';
-import { generateRandomPassword } from 'src/utils/password.util';
+import { User } from '../user/entities/user.entity';
+import { LoginDto } from './dto/login.dto';
+import { RegisterDto } from './dto/register.dto';
 
-// @Injectable()
-// export class AuthService {
-//   constructor(
-//     private readonly userService: UserService,
-//     private readonly jwtService: JwtService,
-//   ) {}
-
-//   async login(email: string, password: string) {
-//     const user = await this.userService.findByEmail(email);
-//     if (!user) throw new UnauthorizedException('Invalid credentials');
-//     if (!password || !user.password) {
-//       throw new UnauthorizedException('Inserted password: ' + password + ' | Fetched Compare to password: ' + user.password);
-//     }
-//     const isMatch = await bcrypt.compare(password, user.password);
-//     if (!isMatch) throw new UnauthorizedException('Invalid Password');
-//     const payload = { sub: user.user_id, email: user.email };
-//     return {
-//       access_token: this.jwtService.sign(payload),
-//       user,
-//     };
-//   }
-
-//   async validateUserById(userId: string) {
-//     return this.userService.findOne(userId);
-//   }
-
-  
-// }
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly userService: UserService,
-    private readonly jwtService: JwtService,
-    private readonly mailService: MailService,
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
+    private jwtService: JwtService,
   ) {}
 
-  async login(email: string, password: string) {
-    const user = await this.userService.findByEmail(email);
-    if (!user) throw new UnauthorizedException('Invalid credentials');
-    if (!password || !user.password) {
-      throw new UnauthorizedException('Inserted password: ' + password + ' | Fetched Compare to password: ' + user.password);
+  async validateUser(email: string, password: string): Promise<any> {
+    const user = await this.userRepository.findOne({
+      where: { email },
+      relations: ['role', 'department'],
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('Invalid credentials');
     }
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) throw new UnauthorizedException('Invalid Password');
-    const payload = { sub: user.user_id, email: user.email };
+
+    // Check if account is locked
+    if (user.isLocked()) {
+      const minutesLeft = Math.ceil(
+        (user.locked_until.getTime() - Date.now()) / 60000,
+      );
+      throw new UnauthorizedException(
+        `Account locked. Try again in ${minutesLeft} minutes`,
+      );
+    }
+
+    // Check if account is active
+    if (!user.is_active) {
+      throw new UnauthorizedException('Account is disabled');
+    }
+
+    // Verify password
+    const isPasswordValid = await bcrypt.compare(password, user.password_hash);
+
+    if (!isPasswordValid) {
+      // Increment failed login attempts
+      await this.handleFailedLogin(user);
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    // Reset failed attempts on successful login
+    await this.handleSuccessfulLogin(user);
+
+    const { password_hash, ...result } = user;
+    return result;
+  }
+
+  async login(loginDto: LoginDto) {
+    const user = await this.validateUser(loginDto.email, loginDto.password);
+
+    const payload = {
+      sub: user.user_id,
+      email: user.email,
+      role: user.role.role_name,
+      department: user.department.department_name,
+    };
+
     return {
       access_token: this.jwtService.sign(payload),
-      user,
+      user: {
+        user_id: user.user_id,
+        email: user.email,
+        name: user.name,
+        surname: user.surname,
+        role: user.role.role_name,
+        department: user.department.department_name,
+      },
     };
   }
 
-  async validateUserById(userId: string) {
-    return this.userService.findOne(userId);
-  }
+  async register(registerDto: RegisterDto) {
+    // Check if user already exists
+    const existingUser = await this.userRepository.findOne({
+      where: { email: registerDto.email },
+    });
 
-  async forgotPassword(email: string) {
-    const user = await this.userService.findByEmail(email);
-    if (!user) {
-      throw new NotFoundException(`User with email ${email} not found`);
+    if (existingUser) {
+      throw new BadRequestException('Email already registered');
     }
 
-    // Generate random password
-    const newPassword = generateRandomPassword();
-
-    // Update user password
-    await this.userService.update(user.user_id, { password: newPassword });
-
-    // Send email with new password
-    await this.mailService.sendingPasswordReset(
-      user.email,
-      `${user.name} ${user.surname}`,
-      newPassword,
+    // Hash password
+    const hashedPassword = await bcrypt.hash(
+      registerDto.password,
+      parseInt(process.env.BCRYPT_ROUNDS, 10) || 12,
     );
 
-    return {
-      message: 'A new password has been sent to your email',
-    };
+    // Create user
+    const user = this.userRepository.create({
+      email: registerDto.email,
+      password_hash: hashedPassword,
+      name: registerDto.name,
+      surname: registerDto.surname,
+      role_id: registerDto.role_id,
+      department_id: registerDto.department_id,
+      is_active: true,
+      email_verified: false,
+    });
+
+    await this.userRepository.save(user);
+
+    const { password_hash, ...result } = user;
+    return result;
+  }
+
+  async changePassword(
+    userId: string,
+    oldPassword: string,
+    newPassword: string,
+  ) {
+    const user = await this.userRepository.findOne({
+      where: { user_id: userId },
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+
+    // Verify old password
+    const isPasswordValid = await bcrypt.compare(oldPassword, user.password_hash);
+
+    if (!isPasswordValid) {
+      throw new UnauthorizedException('Invalid current password');
+    }
+
+    // Hash new password
+    const hashedPassword = await bcrypt.hash(
+      newPassword,
+      parseInt(process.env.BCRYPT_ROUNDS, 10) || 12,
+    );
+    
+    // Update password
+    user.password_hash = hashedPassword;
+    user.password_changed_at = new Date();
+
+    await this.userRepository.save(user);
+
+    return { message: 'Password changed successfully' };
+  }
+
+  private async handleFailedLogin(user: User) {
+    user.failed_login_attempts += 1;
+
+    const maxAttempts = parseInt(process.env.MAX_LOGIN_ATTEMPTS, 10) || 5;
+
+    if (user.failed_login_attempts >= maxAttempts) {
+      const lockTimeMinutes = parseInt(process.env.LOCK_TIME_MINUTES, 10) || 30;
+      user.locked_until = new Date(Date.now() + lockTimeMinutes * 60000);
+    }
+
+    await this.userRepository.save(user);
+  }
+
+  private async handleSuccessfulLogin(user: User) {
+    user.failed_login_attempts = 0;
+    user.locked_until = null;
+    user.last_login = new Date();
+    await this.userRepository.save(user);
+  }
+
+  async validateToken(userId: string): Promise<User> {
+    const user = await this.userRepository.findOne({
+      where: { user_id: userId },
+      relations: ['role', 'department'],
+    });
+
+    if (!user || !user.is_active) {
+      throw new UnauthorizedException('Invalid token');
+    }
+
+    return user;
   }
 }

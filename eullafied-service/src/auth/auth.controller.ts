@@ -1,60 +1,59 @@
-
-// import { Controller, Post, Body } from '@nestjs/common';
-// import { ApiTags, ApiBody, ApiOperation } from '@nestjs/swagger';
-// import { AuthService } from './auth.service';
-// import { LoginDto } from './dto/login.dto';
-// import { Public } from './public.decorator';
-
-// @ApiTags('Auth')
-// @Controller('api/auth')
-// export class AuthController {
-//   constructor(private readonly authService: AuthService) {}
-
-//   @Post('login')
-//   @Public()
-//   @ApiOperation({ summary: 'Login to access the system' })
-//   @ApiBody({ type: LoginDto })
-//   async login(@Body() loginDto: LoginDto) {
-//     console.log('Login DTO:', loginDto);
-//     const { email, password } = loginDto;
-//     return this.authService.login(email, password);
-//   }
-// }
-// auth/auth.controller.ts
-
-
-import { Controller, Post, Body } from '@nestjs/common';
-import { ApiTags, ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  Controller,
+  Post,
+  Body,
+  UseGuards,
+  Request,
+  Get,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { LocalAuthGuard } from './guards/local-auth.guard';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LoginDto } from './dto/login.dto';
-import { Public } from './public.decorator';
-import { ForgotPasswordDto } from './dto/forget-password.dto';
+import { RegisterDto } from './dto/register.dto';
 
-@ApiTags('Auth')
-@Controller('api/auth')
+@Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   @Post('login')
-  @Public()
-  @ApiOperation({ summary: 'Login to access the system' })
-  @ApiBody({ type: LoginDto })
+  @HttpCode(HttpStatus.OK)
   async login(@Body() loginDto: LoginDto) {
-    console.log('Login DTO:', loginDto);
-    const { email, password } = loginDto;
-    return this.authService.login(email, password);
+    return this.authService.login(loginDto);
   }
 
-  @Post('forgot-password')
-  @Public()
-  @ApiOperation({ summary: 'Reset password and send new password via email' })
-  @ApiBody({ type: ForgotPasswordDto })
-  @ApiResponse({ 
-    status: 200, 
-    description: 'New password sent to email',
-  })
-  @ApiResponse({ status: 404, description: 'User not found' })
-  async forgotPassword(@Body() forgotPasswordDto: ForgotPasswordDto) {
-    return this.authService.forgotPassword(forgotPasswordDto.email);
+  @Post('register')
+  @HttpCode(HttpStatus.CREATED)
+  async register(@Body() registerDto: RegisterDto) {
+    return this.authService.register(registerDto);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  async getProfile(@Request() req) {
+    return req.user;
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('change-password')
+  async changePassword(
+    @Request() req,
+    @Body() body: { oldPassword: string; newPassword: string },
+  ) {
+    return this.authService.changePassword(
+      req.user.user_id,
+      body.oldPassword,
+      body.newPassword,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('logout')
+  @HttpCode(HttpStatus.OK)
+  async logout() {
+    // In a real implementation, you would invalidate the refresh token here
+    return { message: 'Logged out successfully' };
   }
 }
