@@ -15,7 +15,7 @@ import {
   import { Ticket } from '../../ticket/entities/ticket.entity';
   import { TicketAssignment } from '../../ticket-assignment/entities/ticket-assignment.entity';
   import { StaffPerformance } from '../../staff-performance/entities/staff-performance.entity';
-  
+
   @Entity('user')
   @Index(['email'])
   @Index(['role_id'])
@@ -102,3 +102,4 @@ import {
       return new Date() < this.locked_until;
     }
   }
+  
