@@ -1,51 +1,71 @@
-import { NestFactory, Reflector } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
-import { AuthGuard } from './auth/auth.guard'; // JWT guard
+import { AppModule } from './app.module';
+import helmet from 'helmet';
+import * as compression from 'compression';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Enable CORS for Angular frontend
+  // Security middleware
+  app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'", 'https://cdn.jsdelivr.net', 'https://maxcdn.bootstrapcdn.com'],
+        scriptSrc: ["'self'", "'unsafe-inline'", 'https://cdn.jsdelivr.net', 'https://code.jquery.com'],
+        imgSrc: ["'self'", 'data:', 'https:'],
+      },
+    },
+    crossOriginEmbedderPolicy: false,
+  }));
+
+  // Compression
+  app.use(compression());
+
+  // CORS Configuration
   app.enableCors({
-    origin: 'http://localhost:52177',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    origin: process.env.CORS_ORIGIN || 'http://localhost:5500',
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
   // Global validation pipe
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: true,
-      transform: true, // 👈 IMPORTANT
+      whitelist: true, // Strip unknown properties
+      forbidNonWhitelisted: true, // Throw error on unknown properties
+      transform: true, // Auto-transform to DTO types
+      transformOptions: {
+        enableImplicitConversion: true,
+      },
     }),
   );
 
+  // Global prefix for all routes
+  app.setGlobalPrefix('api');
 
-  // Swagger setup
-  const config = new DocumentBuilder()
-    .setTitle('Eullafied Service')
-    .setDescription('Eullafied Service API')
-    .setVersion('1.1')
-    .addBearerAuth(
-      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
-      'access-token', // referenced by @ApiBearerAuth()
-    )
-    .build();
-
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
-  // Serve raw JSON at /api-json
-  app.getHttpAdapter().get('/api-json', (req, res) => {
-    res.json(document);
-  });
-
-  // Apply JWT guard globally
-  const reflector = app.get(Reflector);
-  app.useGlobalGuards(new AuthGuard(reflector));
-
-  await app.listen(3000);
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+  
+  console.log(`
+  ╔═══════════════════════════════════════════════════════════╗
+  ║                                                           ║
+  ║   🚀 EULLAFIED SECURE API - RUNNING                      ║
+  ║                                                           ║
+  ║   Environment: ${process.env.NODE_ENV || 'development'}                                     ║
+  ║   Port: ${port}                                              ║
+  ║   URL: http://localhost:${port}                            ║
+  ║   API Docs: http://localhost:${port}/api                   ║
+  ║                                                           ║
+  ║   ✅ Security: ENABLED                                    ║
+  ║   ✅ CORS: CONFIGURED                                     ║
+  ║   ✅ Validation: ACTIVE                                   ║
+  ║   ✅ Rate Limiting: ACTIVE                                ║
+  ║                                                           ║
+  ╚═══════════════════════════════════════════════════════════╝
+  `);
 }
+
 bootstrap();

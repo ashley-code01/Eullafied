@@ -1,41 +1,12 @@
-// import { Injectable, ExecutionContext } from '@nestjs/common';
-// import { AuthGuard as PassportAuthGuard } from '@nestjs/passport';
-// import { Reflector } from '@nestjs/core';
-
-// @Injectable()
-// export class AuthGuard extends PassportAuthGuard('jwt') {
-//   constructor(private reflector: Reflector) {
-//     super();
-//   }
-
-//   canActivate(context: ExecutionContext) {
-//     // Check if route is public
-//     const isPublic = this.reflector.getAllAndOverride<boolean>('isPublic', [
-//       context.getHandler(),
-//       context.getClass(),
-//     ]);
-
-//     if (isPublic) {
-//       return true; // skip auth
-//     }
-
-//     // Otherwise, proceed with JWT validation
-//     return super.canActivate(context);
-//   }
-// }
 import { Injectable, ExecutionContext } from '@nestjs/common';
-import { AuthGuard as PassportAuthGuard } from '@nestjs/passport';
-import { Reflector } from '@nestjs/core';
+import { AuthGuard } from '@nestjs/passport';
+import { Observable } from 'rxjs';
 
 @Injectable()
-export class AuthGuard extends PassportAuthGuard('jwt') {
-  constructor(private reflector: Reflector) {
-    super();
-  }
-
-  canActivate(context: ExecutionContext) {
-    const isPublic = this.reflector.get<boolean>('isPublic', context.getHandler());
-    if (isPublic) return true;
+export class JwtAuthGuard extends AuthGuard('jwt') {
+  canActivate(
+    context: ExecutionContext,
+  ): boolean | Promise<boolean> | Observable<boolean> {
     return super.canActivate(context);
   }
 }
