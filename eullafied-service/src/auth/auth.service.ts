@@ -140,9 +140,9 @@ export class AuthService {
     // Hash new password
     const hashedPassword = await bcrypt.hash(
       newPassword,
-      parseInt(process.env.BCRYPT_ROUNDS, 10) || 12,
+      parseInt(process.env.BCRYPT_ROUNDS, 10) || 12, // issue to be resolved
     );
-    
+
     // Update password
     user.password_hash = hashedPassword;
     user.password_changed_at = new Date();
