@@ -1,0 +1,4080 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+.prettierrc
+eslint.config.mjs
+nest-cli.json
+package.json
+README.md
+src/app.controller.spec.ts
+src/app.controller.ts
+src/app.module.ts
+src/app.service.ts
+src/auth/auth.constant.ts
+src/auth/auth.controller.spec.ts
+src/auth/auth.controller.ts
+src/auth/auth.guard.spec.ts
+src/auth/auth.guard.ts
+src/auth/auth.module.ts
+src/auth/auth.service.spec.ts
+src/auth/auth.service.ts
+src/auth/dto/login.dto.ts
+src/auth/jwt.strategy.ts
+src/auth/local-auth.guard.ts
+src/auth/local.strategy.ts
+src/auth/public.decorator.ts
+src/config/typeorm.config.ts
+src/department/department.controller.spec.ts
+src/department/department.controller.ts
+src/department/department.module.ts
+src/department/department.service.spec.ts
+src/department/department.service.ts
+src/department/dto/create-department.dto.ts
+src/department/dto/update-department.dto.ts
+src/department/entities/department.entity.ts
+src/mail/mail.service.ts
+src/main.ts
+src/profile/profile.controller.spec.ts
+src/profile/profile.controller.ts
+src/profile/profile.module.ts
+src/role/dto/create-role.dto.ts
+src/role/dto/update-role.dto.ts
+src/role/entities/role.entity.ts
+src/role/role.controller.spec.ts
+src/role/role.controller.ts
+src/role/role.module.ts
+src/role/role.service.spec.ts
+src/role/role.service.ts
+src/staff-performance/dto/create-staff-performance.dto.ts
+src/staff-performance/dto/update-staff-performance.dto.ts
+src/staff-performance/entities/staff-performance.entity.ts
+src/staff-performance/staff-performance.controller.spec.ts
+src/staff-performance/staff-performance.controller.ts
+src/staff-performance/staff-performance.module.ts
+src/staff-performance/staff-performance.service.spec.ts
+src/staff-performance/staff-performance.service.ts
+src/ticket-assignment/dto/create-ticket-assignment.dto.ts
+src/ticket-assignment/dto/update-ticket-assignment.dto.ts
+src/ticket-assignment/entities/ticket-assignment.entity.ts
+src/ticket-assignment/ticket-assignment.controller.spec.ts
+src/ticket-assignment/ticket-assignment.controller.ts
+src/ticket-assignment/ticket-assignment.module.ts
+src/ticket-assignment/ticket-assignment.service.spec.ts
+src/ticket-assignment/ticket-assignment.service.ts
+src/ticket-category/dto/create-ticket-category.dto.ts
+src/ticket-category/dto/update-ticket-category.dto.ts
+src/ticket-category/entities/ticket-category.entity.ts
+src/ticket-category/ticket-category.controller.spec.ts
+src/ticket-category/ticket-category.controller.ts
+src/ticket-category/ticket-category.module.ts
+src/ticket-category/ticket-category.service.spec.ts
+src/ticket-category/ticket-category.service.ts
+src/ticket-priority/dto/create-ticket-priority.dto.ts
+src/ticket-priority/dto/update-ticket-priority.dto.ts
+src/ticket-priority/entities/ticket-priority.entity.ts
+src/ticket-priority/ticket-priority.controller.spec.ts
+src/ticket-priority/ticket-priority.controller.ts
+src/ticket-priority/ticket-priority.module.ts
+src/ticket-priority/ticket-priority.service.spec.ts
+src/ticket-priority/ticket-priority.service.ts
+src/ticket-status/dto/create-ticket-status.dto.ts
+src/ticket-status/dto/update-ticket-status.dto.ts
+src/ticket-status/entities/ticket-status.entity.ts
+src/ticket-status/ticket-status.controller.spec.ts
+src/ticket-status/ticket-status.controller.ts
+src/ticket-status/ticket-status.module.ts
+src/ticket-status/ticket-status.service.spec.ts
+src/ticket-status/ticket-status.service.ts
+src/ticket/dto/create-ticket.dto.ts
+src/ticket/dto/update-ticket.dto.ts
+src/ticket/entities/ticket.entity.ts
+src/ticket/ticket.controller.spec.ts
+src/ticket/ticket.controller.ts
+src/ticket/ticket.module.ts
+src/ticket/ticket.service.spec.ts
+src/ticket/ticket.service.ts
+src/user/dto/create-user.dto.ts
+src/user/dto/update-user.dto.ts
+src/user/entities/user.entity.ts
+src/user/user.controller.spec.ts
+src/user/user.controller.ts
+src/user/user.module.ts
+src/user/user.service.spec.ts
+src/user/user.service.ts
+src/utils/bcrypt.ts
+src/utils/password.util.ts
+test/app.e2e-spec.ts
+test/jest-e2e.json
+tsconfig.build.json
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+# compiled output
+/dist
+/node_modules
+/build
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# temp directory
+.temp
+.tmp
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+</file>
+
+<file path=".prettierrc">
+{
+  "singleQuote": true,
+  "trailingComma": "all"
+}
+</file>
+
+<file path="eslint.config.mjs">
+// @ts-check
+import eslint from '@eslint/js';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+
+export default tseslint.config(
+  {
+    ignores: ['eslint.config.mjs'],
+  },
+  eslint.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
+  eslintPluginPrettierRecommended,
+  {
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.jest,
+      },
+      sourceType: 'commonjs',
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
+  {
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-floating-promises': 'warn',
+      '@typescript-eslint/no-unsafe-argument': 'warn'
+    },
+  },
+);
+</file>
+
+<file path="nest-cli.json">
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "deleteOutDir": true
+  }
+}
+</file>
+
+<file path="package.json">
+{
+  "name": "eullafied-service",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "dependencies": {
+    "@nestjs-modules/mailer": "^2.0.2",
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.0.1",
+    "@nestjs/jwt": "^11.0.0",
+    "@nestjs/mapped-types": "*",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/swagger": "^11.2.0",
+    "@nestjs/typeorm": "^11.0.0",
+    "bcrypt": "^6.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
+    "dotenv": "^17.2.2",
+    "handlebars": "^4.7.8",
+    "mysql2": "^3.15.0",
+    "nodemailer": "^7.0.6",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "swagger-ui-express": "^5.0.1",
+    "typeorm": "^0.3.27"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.18.0",
+    "@nestjs/cli": "^11.0.0",
+    "@nestjs/schematics": "^11.0.0",
+    "@nestjs/testing": "^11.0.1",
+    "@types/bcrypt": "^6.0.0",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.10.7",
+    "@types/passport-jwt": "^4.0.1",
+    "@types/passport-local": "^1.0.38",
+    "@types/supertest": "^6.0.2",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.2",
+    "globals": "^16.0.0",
+    "jest": "^30.0.0",
+    "prettier": "^3.4.2",
+    "source-map-support": "^0.5.21",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}
+</file>
+
+<file path="README.md">
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+</p>
+
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
+
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+
+## Description
+
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+
+## Project setup
+
+```bash
+$ npm install
+```
+
+## Compile and run the project
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+```
+
+## Run tests
+
+```bash
+# unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov
+```
+
+## Deployment
+
+When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+
+If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+
+```bash
+$ npm install -g @nestjs/mau
+$ mau deploy
+```
+
+With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+
+## Resources
+
+Check out a few resources that may come in handy when working with NestJS:
+
+- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
+- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
+- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
+- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
+- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
+- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
+- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
+- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+
+## Support
+
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+
+## Stay in touch
+
+- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
+
+## License
+
+Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+</file>
+
+<file path="src/app.controller.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+
+describe('AppController', () => {
+  let appController: AppController;
+
+  beforeEach(async () => {
+    const app: TestingModule = await Test.createTestingModule({
+      controllers: [AppController],
+      providers: [AppService],
+    }).compile();
+
+    appController = app.get<AppController>(AppController);
+  });
+
+  describe('root', () => {
+    it('should return "Hello World!"', () => {
+      expect(appController.getHello()).toBe('Hello World!');
+    });
+  });
+});
+</file>
+
+<file path="src/app.controller.ts">
+import { Controller, Get } from '@nestjs/common';
+import { AppService } from './app.service';
+
+@Controller()
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+
+  @Get()
+  getHello(): string {
+    return this.appService.getHello();
+  }
+}
+</file>
+
+<file path="src/app.module.ts">
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { typeOrmConfigAsync } from './config/typeorm.config';
+import { UserModule } from './user/user.module';
+import { RoleModule } from './role/role.module';
+import { DepartmentModule } from './department/department.module';
+import { TicketCategoryModule } from './ticket-category/ticket-category.module';
+import { TicketPriorityModule } from './ticket-priority/ticket-priority.module';
+import { TicketStatusModule } from './ticket-status/ticket-status.module';
+import { TicketModule } from './ticket/ticket.module';
+import { TicketAssignmentModule } from './ticket-assignment/ticket-assignment.module';
+import { StaffPerformanceModule } from './staff-performance/staff-performance.module';
+import { AuthModule } from './auth/auth.module';
+
+@Module({
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRootAsync(typeOrmConfigAsync),
+    AuthModule,
+    UserModule,
+    RoleModule,
+    DepartmentModule,
+    TicketCategoryModule,
+    TicketPriorityModule,
+    TicketStatusModule,
+    TicketModule,
+    TicketAssignmentModule,
+    StaffPerformanceModule
+  ],
+})
+export class AppModule {}
+</file>
+
+<file path="src/app.service.ts">
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class AppService {
+  getHello(): string {
+    return 'Hello World!';
+  }
+}
+</file>
+
+<file path="src/auth/auth.constant.ts">
+export const jwtConstants = {
+  secret: 'secretKey',          // must match JwtModule and JwtStrategy
+  expiresIn: '1h',              // token expires in 1 hour
+};
+</file>
+
+<file path="src/auth/auth.controller.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { AuthController } from './auth.controller';
+
+describe('AuthController', () => {
+  let controller: AuthController;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [AuthController],
+    }).compile();
+
+    controller = module.get<AuthController>(AuthController);
+  });
+
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/auth/auth.controller.ts">
+// import { Controller, Post, UseGuards, Request, Body, UnauthorizedException } from '@nestjs/common';
+// import { AuthGuard } from '@nestjs/passport';
+// import { AuthService } from './auth.service';
+// import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+// import { LoginDto } from './dto/login.dto';
+// import { UserService } from 'src/user/user.service';
+// import { Public } from './public.decorator';
+
+// @ApiTags('Auth')
+// @Controller('api/auth')
+// export class AuthController {
+//   constructor(private readonly authService: AuthService,
+//     private readonly userService: UserService) { }
+
+
+//   @Post('/login')
+//   @ApiOperation({ summary: 'Login to access the system' })
+//   @ApiBody({ type: LoginDto })
+//   @Public()
+//   async login(@Request() req: any) {
+//     const token = await this.authService.login(req.user);
+//     return {
+//       access_token: token.access_token,
+//       user: {
+//         id: req.user.id,
+//         email: req.user.email,
+//         role: req.user.role?.name,
+//         name: req.user.name,
+//         surname: req.user.surname,
+//         department: req.user.department?.name,
+//       },
+//     };
+//   }
+
+// }
+
+import { Controller, Post, Body } from '@nestjs/common';
+import { ApiTags, ApiBody, ApiOperation } from '@nestjs/swagger';
+import { AuthService } from './auth.service';
+import { LoginDto } from './dto/login.dto';
+import { Public } from './public.decorator';
+
+@ApiTags('Auth')
+@Controller('api/auth')
+export class AuthController {
+  constructor(private readonly authService: AuthService) {}
+
+  @Post('login')
+  @Public()
+  @ApiOperation({ summary: 'Login to access the system' })
+  @ApiBody({ type: LoginDto })
+  async login(@Body() loginDto: LoginDto) {
+    console.log('Login DTO:', loginDto);
+    const { email, password } = loginDto;
+    return this.authService.login(email, password);
+  }
+}
+</file>
+
+<file path="src/auth/auth.guard.spec.ts">
+import { AuthGuard } from './auth.guard';
+
+describe('AuthGuard', () => {
+  it('should be defined', () => {
+    expect(new AuthGuard()).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/auth/auth.guard.ts">
+// import { Injectable, ExecutionContext } from '@nestjs/common';
+// import { AuthGuard as PassportAuthGuard } from '@nestjs/passport';
+// import { Reflector } from '@nestjs/core';
+
+// @Injectable()
+// export class AuthGuard extends PassportAuthGuard('jwt') {
+//   constructor(private reflector: Reflector) {
+//     super();
+//   }
+
+//   canActivate(context: ExecutionContext) {
+//     // Check if route is public
+//     const isPublic = this.reflector.getAllAndOverride<boolean>('isPublic', [
+//       context.getHandler(),
+//       context.getClass(),
+//     ]);
+
+//     if (isPublic) {
+//       return true; // skip auth
+//     }
+
+//     // Otherwise, proceed with JWT validation
+//     return super.canActivate(context);
+//   }
+// }
+import { Injectable, ExecutionContext } from '@nestjs/common';
+import { AuthGuard as PassportAuthGuard } from '@nestjs/passport';
+import { Reflector } from '@nestjs/core';
+
+@Injectable()
+export class AuthGuard extends PassportAuthGuard('jwt') {
+  constructor(private reflector: Reflector) {
+    super();
+  }
+
+  canActivate(context: ExecutionContext) {
+    const isPublic = this.reflector.get<boolean>('isPublic', context.getHandler());
+    if (isPublic) return true;
+    return super.canActivate(context);
+  }
+}
+</file>
+
+<file path="src/auth/auth.module.ts">
+// import { Module } from '@nestjs/common';
+// import { AuthController } from './auth.controller';
+// import { UserModule } from 'src/user/user.module';
+// import { AuthService } from './auth.service';
+// import { LocalStrategy } from './local.strategy';
+// import { PassportModule } from '@nestjs/passport';
+// import { JwtModule } from '@nestjs/jwt';
+// import { jwtConstants } from './auth.constant';
+// import { JwtStrategy } from './jwt.strategy';
+
+// @Module({
+
+//     controllers:[AuthController],
+//     imports:[UserModule,PassportModule,JwtModule.register({
+//         global: true,
+//         secret: jwtConstants.secret,
+//         signOptions: { expiresIn: '3600s' },
+//     })],
+//     providers: [AuthService, LocalStrategy,JwtStrategy],
+
+// })
+// export class AuthModule {}
+
+import { Module } from '@nestjs/common';
+import { AuthService } from './auth.service';
+import { AuthController } from './auth.controller';
+import { UserModule } from 'src/user/user.module';
+import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
+import { jwtConstants } from './auth.constant';
+import { JwtStrategy } from './jwt.strategy';
+
+@Module({
+  imports: [
+    UserModule,
+    PassportModule,
+    JwtModule.register({
+      secret: jwtConstants.secret,
+      signOptions: { expiresIn: jwtConstants.expiresIn },
+    }),
+  ],
+  controllers: [AuthController],
+  providers: [AuthService, JwtStrategy],
+  exports: [AuthService],
+})
+export class AuthModule {}
+</file>
+
+<file path="src/auth/auth.service.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { AuthService } from './auth.service';
+
+describe('AuthService', () => {
+  let service: AuthService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [AuthService],
+    }).compile();
+
+    service = module.get<AuthService>(AuthService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/auth/auth.service.ts">
+// import { Injectable } from '@nestjs/common';
+// import { JwtService } from '@nestjs/jwt';
+// import { UserService } from 'src/user/user.service';
+// import * as bcrypt from 'bcrypt';
+
+// @Injectable()
+// export class AuthService {
+
+//     constructor(
+//         private userService: UserService,
+//         private jwtService: JwtService,
+//     ) { }
+
+//     // validating the user
+//     async validateUser(email: string, password: string) {
+//         const user = await this.userService.findByEmail(email);
+
+//         if (user && await this.comparePassword(password, user.password)) {
+//             return user;
+//         }
+
+//         return null;
+//     }
+
+//     async login(user: any) {
+//         const payload = { email: user.email, sub: user.user_id }; // ✅ use user_id
+//         return {
+//             access_token: this.jwtService.sign(payload),
+//         };
+//     }
+
+
+//     //compare password with the hashed password
+//     private async comparePassword(plainTextPassword: string, hashedPassword: string): Promise<boolean> {
+//         return bcrypt.compare(plainTextPassword, hashedPassword);
+//     }
+// }
+
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { UserService } from 'src/user/user.service';
+import * as bcrypt from 'bcrypt';
+
+@Injectable()
+export class AuthService {
+  constructor(
+    private readonly userService: UserService,
+    private readonly jwtService: JwtService,
+  ) {}
+
+  async login(email: string, password: string) {
+    const user = await this.userService.findByEmail(email);
+    if (!user) throw new UnauthorizedException('Invalid credentials');
+    if (!password || !user.password) {
+      throw new UnauthorizedException('Inserted password: ' + password + ' | Fetched Compare to password: ' + user.password);
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) throw new UnauthorizedException('Invalid Password');
+    const payload = { sub: user.user_id, email: user.email };
+    return {
+      access_token: this.jwtService.sign(payload),
+      user,
+    };
+  }
+
+  async validateUserById(userId: string) {
+    return this.userService.findOne(userId);
+  }
+
+  
+}
+</file>
+
+<file path="src/auth/dto/login.dto.ts">
+import { ApiProperty } from '@nestjs/swagger';
+import { IsEmail, IsString } from 'class-validator';
+
+export class LoginDto {
+  @ApiProperty({ example: 'user@mail.com' })
+  @IsEmail()
+  email: string;
+
+  @ApiProperty({ example: 'password123' })
+  @IsString()
+  password: string;
+}
+</file>
+
+<file path="src/auth/jwt.strategy.ts">
+// import { Injectable } from '@nestjs/common';
+// import { PassportStrategy } from '@nestjs/passport';
+// import { ExtractJwt, Strategy } from 'passport-jwt';
+// import { jwtConstants } from './auth.constant';
+
+// @Injectable()
+// export class JwtStrategy extends PassportStrategy(Strategy) {
+//   constructor() {
+//     super({
+//       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+//       ignoreExpiration: false,
+//       secretOrKey: jwtConstants.secret,
+//     });
+//   }
+
+//   async validate(payload: any) {
+//     return { id: payload.sub, email: payload.email };
+//   }
+// }
+import { Injectable } from '@nestjs/common';
+import { PassportStrategy } from '@nestjs/passport';
+import { ExtractJwt, Strategy } from 'passport-jwt';
+import { jwtConstants } from './auth.constant';
+import { AuthService } from './auth.service';
+
+@Injectable()
+export class JwtStrategy extends PassportStrategy(Strategy) {
+  constructor(private readonly authService: AuthService) {
+    super({
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      ignoreExpiration: false,
+      secretOrKey: jwtConstants.secret,
+    });
+  }
+
+  async validate(payload: any) {
+    // Fetch full user entity based on payload.sub (user_id)
+    const user = await this.authService.validateUserById(payload.sub);
+    return user; // attached to req.user in protected routes
+  }
+}
+</file>
+
+<file path="src/auth/local-auth.guard.ts">
+import { Injectable } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+
+@Injectable()
+export class LocalAuthGuard extends AuthGuard('local') {}
+</file>
+
+<file path="src/auth/local.strategy.ts">
+// import { Strategy } from 'passport-local';
+// import { PassportStrategy } from '@nestjs/passport';
+// import { Injectable, UnauthorizedException } from '@nestjs/common';
+// import { AuthService } from './auth.service';
+
+// @Injectable()
+// export class LocalStrategy extends PassportStrategy(Strategy) {
+//   constructor(private authService: AuthService) {
+//     super({usernameField: 'email'});//Since it requires username we should let it know we using email
+//   }
+
+//   async validate(email: string, password: string): Promise<any> {
+//     console.log(email, password, 'sfdghjk')
+//     const user = await this.authService.validateUser(email, password);
+//     if (!user) {
+//       throw new UnauthorizedException();
+//     }
+//     return user;
+//   }
+// }
+</file>
+
+<file path="src/auth/public.decorator.ts">
+import { SetMetadata } from '@nestjs/common';
+
+// This decorator will mark routes as "public" (no authentication needed)
+export const Public = () => SetMetadata('isPublic', true);
+</file>
+
+<file path="src/config/typeorm.config.ts">
+import { Module } from "@nestjs/common";
+import { ConfigModule, ConfigService } from "@nestjs/config";
+import { TypeOrmModule, TypeOrmModuleAsyncOptions, TypeOrmModuleOptions } from "@nestjs/typeorm";
+import { AppController } from "src/app.controller";
+import { AppService } from "src/app.service";
+import { DepartmentModule } from "src/department/department.module";
+import { RoleModule } from "src/role/role.module";
+import { UserModule } from "src/user/user.module";
+
+
+
+export default class TypeOrmConfig {
+
+  static getOrmConfig(configService: ConfigService): TypeOrmModuleOptions {
+    return {
+      type: 'mysql',
+      host: configService.get<string>('DB_HOST'),      
+      port: configService.get<number>('DB_PORT'),      
+      username: configService.get<string>('DB_USERNAME'),
+      password: configService.get<string>('DB_PASSWORD'),
+      database: configService.get<string>('DB_NAME'),
+      entities: ['dist/**/*.entity.js'],
+      synchronize: true
+
+    };
+  }
+}
+
+export const typeOrmConfigAsync: TypeOrmModuleAsyncOptions = {
+
+  imports: [ConfigModule],
+
+  useFactory: async (configService: ConfigService): Promise<TypeOrmModuleOptions> => TypeOrmConfig.getOrmConfig(configService),
+
+  inject: [ConfigService]
+
+};
+</file>
+
+<file path="src/department/department.controller.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { DepartmentController } from './department.controller';
+import { DepartmentService } from './department.service';
+
+describe('DepartmentController', () => {
+  let controller: DepartmentController;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [DepartmentController],
+      providers: [DepartmentService],
+    }).compile();
+
+    controller = module.get<DepartmentController>(DepartmentController);
+  });
+
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/department/department.controller.ts">
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  NotFoundException,
+} from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOkResponse,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { DepartmentService } from './department.service';
+import { CreateDepartmentDto } from './dto/create-department.dto';
+import { UpdateDepartmentDto } from './dto/update-department.dto';
+import { Department } from './entities/department.entity';
+
+@ApiTags('Departments')
+@ApiBearerAuth('access-token')
+@Controller('api/department')
+export class DepartmentController {
+  constructor(private readonly departmentService: DepartmentService) {}
+
+  @Post()
+  @ApiOperation({ summary: 'Create a new Department' })
+  @ApiBody({ type: CreateDepartmentDto })
+  @ApiOkResponse({ type: Department })
+  async create(@Body() createDepartmentDto: CreateDepartmentDto): Promise<Department> {
+    return this.departmentService.create(createDepartmentDto);
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'Get all Departments' })
+  @ApiOkResponse({ type: [Department] })
+  async findAll(): Promise<Department[]> {
+    return this.departmentService.findAll();
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: 'Get a Department by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Department to retrieve',
+  })
+  @ApiOkResponse({ type: Department })
+  async findOne(@Param('id') id: string): Promise<Department> {
+    return this.departmentService.findOne(id);
+  }
+
+  @Patch(':id')
+  @ApiOperation({ summary: 'Update a Department by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Department to update',
+  })
+  @ApiBody({ type: UpdateDepartmentDto })
+  @ApiOkResponse({ type: Department })
+  async update(
+    @Param('id') id: string,
+    @Body() updateDepartmentDto: UpdateDepartmentDto,
+  ): Promise<Department> {
+    return this.departmentService.update(id, updateDepartmentDto);
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete a Department by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Department to delete',
+  })
+  
+  @ApiResponse({ status: 200, description: 'Department deleted', type: Department })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  @ApiResponse({ status: 404, description: 'Department not found' })
+  async remove(@Param('id') id: string): Promise<Department> {
+    const department = await this.departmentService.findOne(id);
+    if (!department) {
+      throw new NotFoundException('Department not found');
+    }
+    await this.departmentService.remove(id);
+    return department;
+  }
+  
+}
+</file>
+
+<file path="src/department/department.module.ts">
+import { Module } from '@nestjs/common';
+import { DepartmentService } from './department.service';
+import { DepartmentController } from './department.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Department } from './entities/department.entity';
+
+@Module({
+  imports: [TypeOrmModule.forFeature([Department])],
+  controllers: [DepartmentController], 
+  providers: [DepartmentService],
+  exports: [DepartmentService],
+})
+export class DepartmentModule {}
+</file>
+
+<file path="src/department/department.service.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { DepartmentService } from './department.service';
+
+describe('DepartmentService', () => {
+  let service: DepartmentService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [DepartmentService],
+    }).compile();
+
+    service = module.get<DepartmentService>(DepartmentService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/department/department.service.ts">
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateDepartmentDto } from './dto/create-department.dto';
+import { UpdateDepartmentDto } from './dto/update-department.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Department } from './entities/department.entity';
+
+@Injectable()
+export class DepartmentService {
+
+  constructor(
+    @InjectRepository(Department)
+    private readonly departmentRepository: Repository<Department>,
+  ) {}
+
+  async create(createDepartmentDto: CreateDepartmentDto): Promise<Department> {
+    const department = this.departmentRepository.create(createDepartmentDto);
+    return this.departmentRepository.save(department);
+  }
+
+  async findAll(): Promise<Department[]> {
+    return this.departmentRepository.find();
+  }
+
+  async findOne(id: string): Promise<Department> {
+    const department = await this.departmentRepository.findOne({ where: { department_id: id } });
+    if (!department) {
+      throw new NotFoundException(`Department with ID ${id} not found`);
+    }
+    return department;
+  }
+
+  async update(id: string, updateDepartmentDto: UpdateDepartmentDto): Promise<Department> {
+    const department = await this.findOne(id);
+    Object.assign(department, updateDepartmentDto);
+    return this.departmentRepository.save(department);
+  }
+
+  async remove(id: string): Promise<Department> {
+    const department = await this.findOne(id);
+    await this.departmentRepository.remove(department);
+    return department;
+  }
+}
+</file>
+
+<file path="src/department/dto/create-department.dto.ts">
+import { ApiProperty } from '@nestjs/swagger';
+import { IsString, IsNotEmpty } from 'class-validator';
+
+export class CreateDepartmentDto {
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  department_name: string;
+}
+</file>
+
+<file path="src/department/dto/update-department.dto.ts">
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateDepartmentDto } from './create-department.dto';
+
+export class UpdateDepartmentDto extends PartialType(CreateDepartmentDto) {}
+</file>
+
+<file path="src/department/entities/department.entity.ts">
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { User } from 'src/user/entities/user.entity';
+import { Ticket } from 'src/ticket/entities/ticket.entity';
+
+@Entity()
+export class Department {
+    @PrimaryGeneratedColumn('uuid')
+    department_id: string;
+
+    @Column()
+    department_name: string;
+
+    // One department has many users
+    @OneToMany(() => User, (user) => user.department)
+    users: User[];
+
+    // Tickets associated with this department
+    @OneToMany(() => Ticket, (ticket) => ticket.department)
+    tickets: Ticket[];
+}
+</file>
+
+<file path="src/mail/mail.service.ts">
+import { Injectable } from '@nestjs/common';
+import * as nodemailer from 'nodemailer';
+
+@Injectable()
+export class MailService {
+  sendUserCreated(email: string, name: string, rawPassword: string) {
+    throw new Error('Method not implemented.');
+  }
+  sendPasswordReset(email: string, name: string, rawPassword: string) {
+    throw new Error('Method not implemented.');
+  }
+  private transporter;
+
+  constructor() {
+    // configure your SMTP server
+    this.transporter = nodemailer.createTransport({
+      host: 'smtp.your-email.com', // e.g., smtp.gmail.com
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: 'your-email@example.com',
+        pass: 'your-email-password',
+      },
+    });
+  }
+
+  async sendMail(to: string, subject: string, html: string) {
+    const info = await this.transporter.sendMail({
+      from: '"Your App Name" <your-email@example.com>', // sender
+      to,
+      subject,
+      html,
+    });
+
+    console.log('Message sent: %s', info.messageId);
+    return info;
+  }
+}
+</file>
+
+<file path="src/main.ts">
+import { NestFactory, Reflector } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
+import { AuthGuard } from './auth/auth.guard'; // JWT guard
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+  // Enable CORS for Angular frontend
+  app.enableCors({
+    origin: 'http://localhost:49210',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
+
+  // Global validation pipe
+ app.useGlobalPipes(
+  new ValidationPipe({
+    whitelist: true,
+    forbidNonWhitelisted: true,
+    transform: true, // 👈 IMPORTANT
+  }),
+);
+
+
+  // Swagger setup
+  const config = new DocumentBuilder()
+    .setTitle('Eullafied Service')
+    .setDescription('Eullafied Service API')
+    .setVersion('1.1')
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+      'access-token', // referenced by @ApiBearerAuth()
+    )
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
+
+  // Apply JWT guard globally
+  const reflector = app.get(Reflector);
+  app.useGlobalGuards(new AuthGuard(reflector));
+
+  await app.listen(3000);
+}
+bootstrap();
+</file>
+
+<file path="src/profile/profile.controller.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { ProfileController } from './profile.controller';
+
+describe('ProfileController', () => {
+  let controller: ProfileController;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [ProfileController],
+    }).compile();
+
+    controller = module.get<ProfileController>(ProfileController);
+  });
+
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/profile/profile.controller.ts">
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+
+@Controller('profile')
+export class ProfileController {
+
+    @UseGuards(AuthGuard('jwt'))
+    @Get()
+    profile(){
+        return {message:'secure route'};
+    }
+
+}
+</file>
+
+<file path="src/profile/profile.module.ts">
+import { Module } from '@nestjs/common';
+import { ProfileController } from './profile.controller';
+
+@Module({
+  controllers: [ProfileController]
+})
+export class ProfileModule {}
+</file>
+
+<file path="src/role/dto/create-role.dto.ts">
+import { ApiProperty } from '@nestjs/swagger';
+import { IsString, IsNotEmpty } from 'class-validator';
+
+export class CreateRoleDto {
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  role_name: string;
+}
+</file>
+
+<file path="src/role/dto/update-role.dto.ts">
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateRoleDto } from './create-role.dto';
+
+export class UpdateRoleDto extends PartialType(CreateRoleDto) {}
+</file>
+
+<file path="src/role/entities/role.entity.ts">
+import { User } from 'src/user/entities/user.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+
+
+@Entity()
+export class Role {
+    @PrimaryGeneratedColumn('uuid')
+    role_id: string;
+
+    @Column()
+    role_name: string;
+
+    // One role has many users
+    @OneToMany(() => User, (user) => user.role)
+    users: User[];
+}
+</file>
+
+<file path="src/role/role.controller.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { RoleController } from './role.controller';
+import { RoleService } from './role.service';
+
+describe('RoleController', () => {
+  let controller: RoleController;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [RoleController],
+      providers: [RoleService],
+    }).compile();
+
+    controller = module.get<RoleController>(RoleController);
+  });
+
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/role/role.controller.ts">
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  NotFoundException,
+} from '@nestjs/common';
+import { RoleService } from './role.service';
+import { CreateRoleDto } from './dto/create-role.dto';
+import { UpdateRoleDto } from './dto/update-role.dto';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOkResponse,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { Role } from './entities/role.entity';
+
+@ApiTags('Roles')
+@ApiBearerAuth('access-token')
+@Controller('api/role')
+export class RoleController {
+  constructor(private readonly roleService: RoleService) {}
+
+  @Post()
+  @ApiOperation({ summary: 'Create a new Role' })
+  @ApiBody({ type: CreateRoleDto })
+  @ApiOkResponse({ type: Role })
+  async create(@Body() createRoleDto: CreateRoleDto): Promise<Role> {
+    return this.roleService.create(createRoleDto);
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'Get all Roles' })
+  @ApiOkResponse({ type: [Role] })
+  async findAll(): Promise<Role[]> {
+    return this.roleService.findAll();
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: 'Get a Role by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Role to retrieve',
+  })
+  @ApiOkResponse({ type: Role })
+  async findOne(@Param('id') id: string): Promise<Role> {
+    return this.roleService.findOne(id);
+  }
+
+  @Patch(':id')
+  @ApiOperation({ summary: 'Update a Role by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Role to update',
+  })
+  @ApiBody({ type: UpdateRoleDto })
+  @ApiOkResponse({ type: Role })
+  async update(
+    @Param('id') id: string,
+    @Body() updateRoleDto: UpdateRoleDto,
+  ): Promise<Role> {
+    return this.roleService.update(id, updateRoleDto);
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete a Role by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Role to delete',
+  })
+
+  @ApiResponse({ status: 200, description: 'Role deleted', type: Role })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  @ApiResponse({ status: 404, description: 'Role not found' })
+  async remove(@Param('id') id: string): Promise<Role> {
+    const role = await this.roleService.findOne(id);
+    if (!role) {
+      throw new NotFoundException('Role not found');
+    }
+    await this.roleService.remove(id);
+    return role;
+  }
+  
+}
+</file>
+
+<file path="src/role/role.module.ts">
+import { Module } from '@nestjs/common';
+import { RoleService } from './role.service';
+import { RoleController } from './role.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Role } from './entities/role.entity';
+
+@Module({
+  imports: [TypeOrmModule.forFeature([Role])],
+  controllers: [RoleController], 
+  providers: [RoleService],
+  exports: [RoleService],
+})
+export class RoleModule {}
+</file>
+
+<file path="src/role/role.service.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { RoleService } from './role.service';
+
+describe('RoleService', () => {
+  let service: RoleService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [RoleService],
+    }).compile();
+
+    service = module.get<RoleService>(RoleService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/role/role.service.ts">
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Role } from './entities/role.entity';
+import { CreateRoleDto } from './dto/create-role.dto';
+import { UpdateRoleDto } from './dto/update-role.dto';
+
+@Injectable()
+export class RoleService {
+  constructor(
+    @InjectRepository(Role)
+    private readonly roleRepository: Repository<Role>,
+  ) {}
+
+  async create(createRoleDto: CreateRoleDto): Promise<Role> {
+    const role = this.roleRepository.create(createRoleDto);
+    return this.roleRepository.save(role);
+  }
+
+  async findAll(): Promise<Role[]> {
+    return this.roleRepository.find();
+  }
+
+  async findOne(id: string): Promise<Role> {
+    const role = await this.roleRepository.findOne({ where: { role_id: id } });
+    if (!role) {
+      throw new NotFoundException(`Role with ID ${id} not found`);
+    }
+    return role;
+  }
+
+  async update(id: string, updateRoleDto: UpdateRoleDto): Promise<Role> {
+    const role = await this.findOne(id);
+    Object.assign(role, updateRoleDto);
+    return this.roleRepository.save(role);
+  }
+
+  async remove(id: string): Promise<Role> {
+    const role = await this.findOne(id);
+    await this.roleRepository.remove(role);
+    return role;
+  }
+}
+</file>
+
+<file path="src/staff-performance/dto/create-staff-performance.dto.ts">
+import { ApiProperty } from '@nestjs/swagger';
+import { IsDateString, IsNotEmpty, IsNumber, IsOptional, Min } from 'class-validator';
+
+export class CreateStaffPerformanceDto {
+  @ApiProperty({ description: 'User ID (UUID) of the staff member' })
+  @IsNotEmpty()
+  user_id: string;
+
+  @ApiProperty({ description: 'Metric date in YYYY-MM-DD format' })
+  @IsNotEmpty()
+  @IsDateString()
+  metric_date: string;
+
+  @ApiProperty({ description: 'Number of tickets resolved', required: false, default: 0 })
+  @IsOptional()
+  @IsNumber()
+  @Min(0)
+  tickets_resolved?: number;
+
+  @ApiProperty({ description: 'Average resolution time in seconds', required: false })
+  @IsOptional()
+  @IsNumber()
+  @Min(0)
+  avg_resolution_seconds?: number;
+}
+</file>
+
+<file path="src/staff-performance/dto/update-staff-performance.dto.ts">
+import { PartialType } from '@nestjs/swagger';
+import { CreateStaffPerformanceDto } from './create-staff-performance.dto';
+
+export class UpdateStaffPerformanceDto extends PartialType(CreateStaffPerformanceDto) {}
+</file>
+
+<file path="src/staff-performance/entities/staff-performance.entity.ts">
+import { User } from 'src/user/entities/user.entity';
+import { Entity, Column, ManyToOne, JoinColumn, PrimaryColumn } from 'typeorm';
+
+
+@Entity({ name: 'staff_performance_counters' })
+export class StaffPerformanceCounter {
+  @PrimaryColumn('uuid')
+  user_id: string;
+
+  @PrimaryColumn({ type: 'date' })
+  metric_date: Date;
+
+  @Column({ type: 'int', unsigned: true, default: 0 })
+  tickets_resolved: number;
+
+  @Column({ type: 'int', unsigned: true, nullable: true })
+  avg_resolution_seconds: number;
+
+  @ManyToOne(() => User, { nullable: false, onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'user_id' })
+  user: User;
+}
+</file>
+
+<file path="src/staff-performance/staff-performance.controller.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { StaffPerformanceController } from './staff-performance.controller';
+import { StaffPerformanceService } from './staff-performance.service';
+
+describe('StaffPerformanceController', () => {
+  let controller: StaffPerformanceController;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [StaffPerformanceController],
+      providers: [StaffPerformanceService],
+    }).compile();
+
+    controller = module.get<StaffPerformanceController>(StaffPerformanceController);
+  });
+
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/staff-performance/staff-performance.controller.ts">
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  NotFoundException,
+} from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiBody, ApiOkResponse, ApiParam, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
+import { CreateStaffPerformanceDto } from './dto/create-staff-performance.dto';
+import { StaffPerformanceCounter } from './entities/staff-performance.entity';
+import { UpdateStaffPerformanceDto } from './dto/update-staff-performance.dto';
+import { StaffPerformanceService } from './staff-performance.service';
+
+@ApiTags('Staff Performance Counter')
+@ApiBearerAuth('access-token')
+@Controller('api/staff-performance-counter')
+export class StaffPerformanceController {
+  constructor(private readonly counterService: StaffPerformanceService) {}
+
+  @Post()
+  @ApiOperation({ summary: 'Create a new Staff Performance Counter' })
+  @ApiBody({ type: CreateStaffPerformanceDto })
+  @ApiOkResponse({ type: StaffPerformanceCounter })
+  async create(
+    @Body() createDto: CreateStaffPerformanceDto,
+  ): Promise<StaffPerformanceCounter> {
+    return this.counterService.create(createDto);
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'Get all Staff Performance Counters' })
+  @ApiOkResponse({ type: [StaffPerformanceCounter] })
+  async findAll(): Promise<StaffPerformanceCounter[]> {
+    return this.counterService.findAll();
+  }
+
+  @Get(':user_id/:metric_date')
+  @ApiOperation({ summary: 'Get a Staff Performance Counter by user and date' })
+  @ApiParam({ name: 'user_id', description: 'UUID of the user' })
+  @ApiParam({ name: 'metric_date', description: 'Metric date in YYYY-MM-DD format' })
+  @ApiOkResponse({ type: StaffPerformanceCounter })
+  async findOne(
+    @Param('user_id') user_id: string,
+    @Param('metric_date') metric_date: string,
+  ): Promise<StaffPerformanceCounter> {
+    return this.counterService.findOne(user_id, metric_date);
+  }
+
+  @Patch(':user_id/:metric_date')
+  @ApiOperation({ summary: 'Update a Staff Performance Counter by user and date' })
+  @ApiParam({ name: 'user_id', description: 'UUID of the user' })
+  @ApiParam({ name: 'metric_date', description: 'Metric date in YYYY-MM-DD format' })
+  @ApiBody({ type: UpdateStaffPerformanceDto })
+  @ApiOkResponse({ type: StaffPerformanceCounter })
+  async update(
+    @Param('user_id') user_id: string,
+    @Param('metric_date') metric_date: string,
+    @Body() updateDto: UpdateStaffPerformanceDto,
+  ): Promise<StaffPerformanceCounter> {
+    return this.counterService.update(user_id, metric_date, updateDto);
+  }
+
+  @Delete(':user_id/:metric_date')
+  @ApiOperation({ summary: 'Delete a Staff Performance Counter by user and date' })
+  @ApiParam({ name: 'user_id', description: 'UUID of the user' })
+  @ApiParam({ name: 'metric_date', description: 'Metric date in YYYY-MM-DD format' })
+  @ApiResponse({ status: 200, description: 'Counter deleted', type: StaffPerformanceCounter })
+  @ApiResponse({ status: 404, description: 'Counter not found' })
+  async remove(
+    @Param('user_id') user_id: string,
+    @Param('metric_date') metric_date: string,
+  ): Promise<StaffPerformanceCounter> {
+    const counter = await this.counterService.findOne(user_id, metric_date);
+    if (!counter) {
+      throw new NotFoundException(`Counter for user ${user_id} on ${metric_date} not found`);
+    }
+    await this.counterService.remove(user_id, metric_date);
+    return counter;
+  }
+}
+</file>
+
+<file path="src/staff-performance/staff-performance.module.ts">
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from 'src/user/entities/user.entity';
+import { StaffPerformanceCounter } from './entities/staff-performance.entity';
+import { StaffPerformanceService } from './staff-performance.service';
+import { StaffPerformanceController } from './staff-performance.controller';
+
+@Module({
+  imports: [TypeOrmModule.forFeature([StaffPerformanceCounter, User])],
+  controllers: [StaffPerformanceController], 
+  providers: [StaffPerformanceService],
+  exports: [StaffPerformanceService],
+})
+export class StaffPerformanceModule {}
+</file>
+
+<file path="src/staff-performance/staff-performance.service.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { StaffPerformanceService } from './staff-performance.service';
+
+describe('StaffPerformanceService', () => {
+  let service: StaffPerformanceService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [StaffPerformanceService],
+    }).compile();
+
+    service = module.get<StaffPerformanceService>(StaffPerformanceService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/staff-performance/staff-performance.service.ts">
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateStaffPerformanceDto } from './dto/create-staff-performance.dto';
+import { UpdateStaffPerformanceDto } from './dto/update-staff-performance.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/user/entities/user.entity';
+import { Repository } from 'typeorm';
+import { StaffPerformanceCounter } from './entities/staff-performance.entity';
+
+@Injectable()
+export class StaffPerformanceService {
+  constructor(
+    @InjectRepository(StaffPerformanceCounter)
+    private readonly counterRepository: Repository<StaffPerformanceCounter>,
+
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+  ) {}
+
+  async create(dto: CreateStaffPerformanceDto): Promise<StaffPerformanceCounter> {
+    const user = await this.userRepository.findOne({ where: { user_id: dto.user_id } });
+    if (!user) throw new NotFoundException(`User ${dto.user_id} not found`);
+
+    const counter = this.counterRepository.create({
+      ...dto,
+      user,
+      metric_date: new Date(dto.metric_date),
+    });
+
+    return this.counterRepository.save(counter);
+  }
+
+  async findAll(): Promise<StaffPerformanceCounter[]> {
+    return this.counterRepository.find({ relations: ['user'] });
+  }
+
+  async findOne(user_id: string, metric_date: string): Promise<StaffPerformanceCounter> {
+    const counter = await this.counterRepository.findOne({
+      where: { user_id, metric_date: new Date(metric_date) },
+      relations: ['user'],
+    });
+    if (!counter) throw new NotFoundException(`Counter for user ${user_id} on ${metric_date} not found`);
+    return counter;
+  }
+
+  async update(
+    user_id: string,
+    metric_date: string,
+    dto: UpdateStaffPerformanceDto,
+  ): Promise<StaffPerformanceCounter> {
+    const counter = await this.findOne(user_id, metric_date);
+    Object.assign(counter, dto);
+    return this.counterRepository.save(counter);
+  }
+
+  async remove(user_id: string, metric_date: string): Promise<StaffPerformanceCounter> {
+    const counter = await this.findOne(user_id, metric_date);
+    await this.counterRepository.remove(counter);
+    return counter;
+  }
+}
+</file>
+
+<file path="src/ticket-assignment/dto/create-ticket-assignment.dto.ts">
+import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsOptional, IsString, MaxLength } from 'class-validator';
+
+export class CreateTicketAssignmentDto {
+  @ApiProperty({ description: 'The ID of the ticket being assigned' })
+  @IsString()
+  @IsNotEmpty()
+  ticket_id: string;
+
+  @ApiProperty({ description: 'The ID of the user assigned to the ticket' })
+  @IsString()
+  @IsNotEmpty()
+  assigned_to: string;
+
+  @ApiProperty({
+    description: 'Reason for assignment',
+    required: false,
+    maxLength: 255,
+  })
+  @IsOptional()
+  @IsString()
+  @MaxLength(255)
+  assignment_reason?: string;
+}
+</file>
+
+<file path="src/ticket-assignment/dto/update-ticket-assignment.dto.ts">
+import { PartialType } from '@nestjs/swagger';
+import { CreateTicketAssignmentDto } from './create-ticket-assignment.dto';
+
+export class UpdateTicketAssignmentDto extends PartialType(CreateTicketAssignmentDto) {}
+</file>
+
+<file path="src/ticket-assignment/entities/ticket-assignment.entity.ts">
+import { Ticket } from 'src/ticket/entities/ticket.entity';
+import { User } from 'src/user/entities/user.entity';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+
+
+@Entity({ name: 'ticket_assignments' })
+export class TicketAssignment {
+  @PrimaryGeneratedColumn('uuid')
+  assignment_id: string;
+
+  @ManyToOne(() => Ticket, (ticket) => ticket.assignments, { nullable: false })
+  @JoinColumn({ name: 'ticket_id' })
+  ticket: Ticket;
+
+  @ManyToOne(() => User, { nullable: false })
+  @JoinColumn({ name: 'assigned_to' })
+  assigned_to: User;
+
+  @CreateDateColumn({ type: 'timestamp' })
+  assigned_at: Date;
+
+  @Column({ type: 'timestamp', nullable: true })
+  unassigned_at: Date;
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  updated_at: Date;
+
+  @Column({ length: 255, nullable: true })
+  assignment_reason: string;
+}
+</file>
+
+<file path="src/ticket-assignment/ticket-assignment.controller.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { TicketAssignmentController } from './ticket-assignment.controller';
+import { TicketAssignmentService } from './ticket-assignment.service';
+
+describe('TicketAssignmentController', () => {
+  let controller: TicketAssignmentController;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [TicketAssignmentController],
+      providers: [TicketAssignmentService],
+    }).compile();
+
+    controller = module.get<TicketAssignmentController>(TicketAssignmentController);
+  });
+
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/ticket-assignment/ticket-assignment.controller.ts">
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  NotFoundException,
+} from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOkResponse,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { TicketAssignmentService } from './ticket-assignment.service';
+import { CreateTicketAssignmentDto } from './dto/create-ticket-assignment.dto';
+import { UpdateTicketAssignmentDto } from './dto/update-ticket-assignment.dto';
+import { TicketAssignment } from './entities/ticket-assignment.entity';
+
+@ApiTags('Ticket Assignments')
+@ApiBearerAuth('access-token')
+@Controller('api/ticket-assignment')
+export class TicketAssignmentController {
+  constructor(private readonly assignmentService: TicketAssignmentService) {}
+
+  @Post()
+  @ApiOperation({ summary: 'Create a new Ticket Assignment' })
+  @ApiBody({ type: CreateTicketAssignmentDto })
+  @ApiOkResponse({ type: TicketAssignment })
+  async create(
+    @Body() createDto: CreateTicketAssignmentDto,
+  ): Promise<TicketAssignment> {
+    return this.assignmentService.create(createDto);
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'Get all Ticket Assignments' })
+  @ApiOkResponse({ type: [TicketAssignment] })
+  async findAll(): Promise<TicketAssignment[]> {
+    return this.assignmentService.findAll();
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: 'Get a Ticket Assignment by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Ticket Assignment to retrieve',
+  })
+  @ApiOkResponse({ type: TicketAssignment })
+  async findOne(@Param('id') id: string): Promise<TicketAssignment> {
+    return this.assignmentService.findOne(id);
+  }
+
+  @Patch(':id')
+  @ApiOperation({ summary: 'Update a Ticket Assignment by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Ticket Assignment to update',
+  })
+  @ApiBody({ type: UpdateTicketAssignmentDto })
+  @ApiOkResponse({ type: TicketAssignment })
+  async update(
+    @Param('id') id: string,
+    @Body() updateDto: UpdateTicketAssignmentDto,
+  ): Promise<TicketAssignment> {
+    return this.assignmentService.update(id, updateDto);
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Soft remove (unassign) a Ticket Assignment by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Ticket Assignment to remove',
+  })
+  @ApiResponse({ status: 200, description: 'Assignment unassigned', type: TicketAssignment })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  @ApiResponse({ status: 404, description: 'Assignment not found' })
+  async remove(@Param('id') id: string): Promise<TicketAssignment> {
+    const assignment = await this.assignmentService.findOne(id);
+    if (!assignment) throw new NotFoundException('Assignment not found');
+    return this.assignmentService.remove(id);
+  }
+}
+</file>
+
+<file path="src/ticket-assignment/ticket-assignment.module.ts">
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { TicketAssignment } from './entities/ticket-assignment.entity';
+import { Ticket } from 'src/ticket/entities/ticket.entity';
+import { User } from 'src/user/entities/user.entity';
+import { TicketAssignmentService } from './ticket-assignment.service';
+import { TicketAssignmentController } from './ticket-assignment.controller';
+
+@Module({
+  imports: [
+    TypeOrmModule.forFeature([TicketAssignment, Ticket, User]),
+  ],
+  providers: [TicketAssignmentService],
+  controllers: [TicketAssignmentController],
+  exports: [TicketAssignmentService],
+})
+export class TicketAssignmentModule {}
+</file>
+
+<file path="src/ticket-assignment/ticket-assignment.service.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { TicketAssignmentService } from './ticket-assignment.service';
+
+describe('TicketAssignmentService', () => {
+  let service: TicketAssignmentService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [TicketAssignmentService],
+    }).compile();
+
+    service = module.get<TicketAssignmentService>(TicketAssignmentService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/ticket-assignment/ticket-assignment.service.ts">
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { TicketAssignment } from './entities/ticket-assignment.entity';
+import { User } from 'src/user/entities/user.entity';
+import { Ticket } from 'src/ticket/entities/ticket.entity';
+import { CreateTicketAssignmentDto } from './dto/create-ticket-assignment.dto';
+import { UpdateTicketAssignmentDto } from './dto/update-ticket-assignment.dto';
+
+@Injectable()
+export class TicketAssignmentService {
+  constructor(
+    @InjectRepository(TicketAssignment)
+    private readonly assignmentRepository: Repository<TicketAssignment>,
+
+    @InjectRepository(Ticket)
+    private readonly ticketRepository: Repository<Ticket>,
+
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+  ) {}
+
+  async create(createDto: CreateTicketAssignmentDto): Promise<TicketAssignment> {
+    const ticket = await this.ticketRepository.findOne({
+      where: { ticket_id: createDto.ticket_id },
+    });
+    if (!ticket) throw new NotFoundException(`Ticket ${createDto.ticket_id} not found`);
+
+    const assigned_to = await this.userRepository.findOne({
+      where: { user_id: createDto.assigned_to },
+    });
+    if (!assigned_to)
+      throw new NotFoundException(`User ${createDto.assigned_to} not found`);
+
+    const assignment = this.assignmentRepository.create({
+      ticket,
+      assigned_to,
+      assignment_reason: createDto.assignment_reason,
+    });
+
+    return this.assignmentRepository.save(assignment);
+  }
+
+  async findAll(): Promise<TicketAssignment[]> {
+    return this.assignmentRepository.find();
+  }
+
+  async findOne(id: string): Promise<TicketAssignment> {
+    const assignment = await this.assignmentRepository.findOne({ where: { assignment_id: id } });
+    if (!assignment) throw new NotFoundException(`Assignment ${id} not found`);
+    return assignment;
+  }
+
+  async update(id: string, updateDto: UpdateTicketAssignmentDto): Promise<TicketAssignment> {
+    const assignment = await this.assignmentRepository.findOne({ where: { assignment_id: id } });
+    if (!assignment) throw new NotFoundException(`Assignment ${id} not found`);
+
+    // Update ticket if provided
+    if (updateDto.ticket_id) {
+      const ticket = await this.ticketRepository.findOne({
+        where: { ticket_id: updateDto.ticket_id },
+      });
+      if (!ticket) throw new NotFoundException(`Ticket ${updateDto.ticket_id} not found`);
+      assignment.ticket = ticket;
+    }
+
+    // Update assigned_to if provided
+    if (updateDto.assigned_to) {
+      const user = await this.userRepository.findOne({
+        where: { user_id: updateDto.assigned_to },
+      });
+      if (!user) throw new NotFoundException(`User ${updateDto.assigned_to} not found`);
+      assignment.assigned_to = user;
+    }
+
+    // Update optional reason
+    if (updateDto.assignment_reason !== undefined) {
+      assignment.assignment_reason = updateDto.assignment_reason;
+    }
+
+    // Save will automatically update `updated_at`
+    return this.assignmentRepository.save(assignment);
+  }
+
+  // Soft remove (mark unassigned)
+  async remove(id: string): Promise<TicketAssignment> {
+    const assignment = await this.assignmentRepository.findOne({ where: { assignment_id: id } });
+    if (!assignment) throw new NotFoundException(`Assignment ${id} not found`);
+
+    assignment.unassigned_at = new Date();
+
+    // Save will automatically update `updated_at`
+    return this.assignmentRepository.save(assignment);
+  }
+}
+</file>
+
+<file path="src/ticket-category/dto/create-ticket-category.dto.ts">
+import { ApiProperty } from "@nestjs/swagger";
+import { IsNotEmpty, IsString } from "class-validator";
+
+export class CreateTicketCategoryDto {
+    @ApiProperty()
+    @IsString()
+    @IsNotEmpty()
+    name: string;
+}
+</file>
+
+<file path="src/ticket-category/dto/update-ticket-category.dto.ts">
+import { PartialType } from '@nestjs/swagger';
+import { CreateTicketCategoryDto } from './create-ticket-category.dto';
+
+export class UpdateTicketCategoryDto extends PartialType(CreateTicketCategoryDto) {}
+</file>
+
+<file path="src/ticket-category/entities/ticket-category.entity.ts">
+import { Ticket } from 'src/ticket/entities/ticket.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+
+
+@Entity()
+export class TicketCategory {
+    @PrimaryGeneratedColumn('uuid')
+    category_id: string;
+    
+    @Column({ unique: true, length: 100 })
+    name: string; 
+
+    @OneToMany(() => Ticket, (ticket) => ticket.category)
+    tickets: Ticket[];
+}
+</file>
+
+<file path="src/ticket-category/ticket-category.controller.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { TicketCategoryController } from './ticket-category.controller';
+import { TicketCategoryService } from './ticket-category.service';
+
+describe('TicketCategoryController', () => {
+  let controller: TicketCategoryController;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [TicketCategoryController],
+      providers: [TicketCategoryService],
+    }).compile();
+
+    controller = module.get<TicketCategoryController>(TicketCategoryController);
+  });
+
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/ticket-category/ticket-category.controller.ts">
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  NotFoundException,
+} from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOkResponse,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { TicketCategoryService } from './ticket-category.service';
+import { CreateTicketCategoryDto } from './dto/create-ticket-category.dto';
+import { TicketCategory } from './entities/ticket-category.entity';
+import { UpdateTicketCategoryDto } from './dto/update-ticket-category.dto';
+
+
+@ApiTags('Ticket Categories')
+@ApiBearerAuth('access-token')
+@Controller('ticket-category')
+export class TicketCategoryController {
+  constructor(private readonly ticketCategoryService: TicketCategoryService) {}
+
+  @Post()
+  @Post()
+    @ApiOperation({ summary: 'Create a new Ticket Category' })
+    @ApiBody({ type: CreateTicketCategoryDto })
+    @ApiOkResponse({ type: TicketCategory })
+  create(@Body() createTicketCategoryDto: CreateTicketCategoryDto) {
+    return this.ticketCategoryService.create(createTicketCategoryDto);
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'Get all Ticket Categories' })
+  @ApiOkResponse({ type: [TicketCategory] })
+  async findAll(): Promise<TicketCategory[]> {
+    return this.ticketCategoryService.findAll();
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: 'Get a Ticket Category by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Ticket Category to retrieve',
+  })
+  @ApiOkResponse({ type: TicketCategory })
+  async findOne(@Param('id') id: string): Promise<TicketCategory> {
+    return this.ticketCategoryService.findOne(id);
+  }
+
+  @Patch(':id')
+  @ApiOperation({ summary: 'Update a Ticket Category by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Ticket Category to update',
+  })
+  @ApiBody({ type: UpdateTicketCategoryDto })
+  @ApiOkResponse({ type: TicketCategory })
+  async update(
+    @Param('id') id: string,
+    @Body() updateTicketCategoryDto: UpdateTicketCategoryDto,
+  ): Promise<TicketCategory> {
+    return this.ticketCategoryService.update(id, UpdateTicketCategoryDto);
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete a Ticket Category by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Ticket Category to delete',
+  })
+  @ApiResponse({ status: 200, description: 'Ticket Category deleted', type: TicketCategory })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  @ApiResponse({ status: 404, description: 'Ticket Category not found' })
+  async remove(@Param('id') id: string): Promise<TicketCategory> {
+    const ticketCategory = await this.ticketCategoryService.findOne(id);
+    if (!ticketCategory) {
+      throw new NotFoundException('Ticket Category not found');
+    }
+    await this.ticketCategoryService.remove(id);
+    return ticketCategory;
+  }
+  
+}
+</file>
+
+<file path="src/ticket-category/ticket-category.module.ts">
+import { Module } from '@nestjs/common';
+import { TicketCategoryService } from './ticket-category.service';
+import { TicketCategoryController } from './ticket-category.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { TicketCategory } from './entities/ticket-category.entity';
+
+@Module({
+  imports: [TypeOrmModule.forFeature([TicketCategory])],
+  controllers: [TicketCategoryController], 
+  providers: [TicketCategoryService],
+  exports: [TicketCategoryService],
+})
+export class TicketCategoryModule {}
+</file>
+
+<file path="src/ticket-category/ticket-category.service.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { TicketCategoryService } from './ticket-category.service';
+
+describe('TicketCategoryService', () => {
+  let service: TicketCategoryService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [TicketCategoryService],
+    }).compile();
+
+    service = module.get<TicketCategoryService>(TicketCategoryService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/ticket-category/ticket-category.service.ts">
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { TicketCategory } from './entities/ticket-category.entity';
+import { CreateTicketCategoryDto } from './dto/create-ticket-category.dto';
+import { UpdateTicketCategoryDto } from './dto/update-ticket-category.dto';
+
+@Injectable()
+export class TicketCategoryService {
+  constructor(
+    @InjectRepository(TicketCategory)
+    private readonly ticketCategoryRepository: Repository<TicketCategory>,
+  ) {}  
+
+  async create(createTicketCategoryDto: CreateTicketCategoryDto): Promise<TicketCategory> {
+     const category = this.ticketCategoryRepository.create(createTicketCategoryDto);
+    return this.ticketCategoryRepository.save(category);
+  }
+
+  async findAll(): Promise<TicketCategory[]> {
+    return this.ticketCategoryRepository.find({
+      relations: ['tickets'], // eager load tickets if needed
+    });
+  }
+
+  async findOne(id: string): Promise<TicketCategory> {
+    const category = await this.ticketCategoryRepository.findOne({
+      where: { category_id: id },
+      relations: ['tickets'],
+    });
+
+    if (!category) {
+      throw new NotFoundException(`Ticket Category with ID ${id} not found`);
+    }
+    return category;
+  }
+
+  async update(
+    id: string,
+    updateTicketCategoryDto: UpdateTicketCategoryDto,
+  ): Promise<TicketCategory> {
+    const category = await this.findOne(id);
+    Object.assign(category, updateTicketCategoryDto);
+    return this.ticketCategoryRepository.save(category);
+  }
+
+  async remove(id: string): Promise<TicketCategory> {
+    const category = await this.findOne(id);
+    await this.ticketCategoryRepository.remove(category);
+    return category;
+  }
+}
+</file>
+
+<file path="src/ticket-priority/dto/create-ticket-priority.dto.ts">
+import { ApiProperty } from "@nestjs/swagger";
+import { IsNotEmpty, IsString } from "class-validator";
+
+export class CreateTicketPriorityDto {
+    @ApiProperty()
+    @IsString()
+    @IsNotEmpty()
+    name: string;
+}
+</file>
+
+<file path="src/ticket-priority/dto/update-ticket-priority.dto.ts">
+import { PartialType } from '@nestjs/swagger';
+import { CreateTicketPriorityDto } from './create-ticket-priority.dto';
+
+export class UpdateTicketPriorityDto extends PartialType(CreateTicketPriorityDto) {}
+</file>
+
+<file path="src/ticket-priority/entities/ticket-priority.entity.ts">
+import { Ticket } from 'src/ticket/entities/ticket.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+
+
+@Entity()
+export class TicketPriority {
+  @PrimaryGeneratedColumn('uuid')
+  priority_id: string;
+
+  @Column({ unique: true, length: 50 })
+  name: string;
+
+  @OneToMany(() => Ticket, (ticket) => ticket.priority)
+  tickets: Ticket[];
+}
+</file>
+
+<file path="src/ticket-priority/ticket-priority.controller.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { TicketPriorityController } from './ticket-priority.controller';
+import { TicketPriorityService } from './ticket-priority.service';
+
+describe('TicketPriorityController', () => {
+  let controller: TicketPriorityController;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [TicketPriorityController],
+      providers: [TicketPriorityService],
+    }).compile();
+
+    controller = module.get<TicketPriorityController>(TicketPriorityController);
+  });
+
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/ticket-priority/ticket-priority.controller.ts">
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  NotFoundException,
+} from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOkResponse,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { CreateTicketPriorityDto } from './dto/create-ticket-priority.dto';
+import { UpdateTicketPriorityDto } from './dto/update-ticket-priority.dto';
+import { TicketPriority } from './entities/ticket-priority.entity';
+import { TicketPriorityService } from './ticket-priority.service';
+
+@ApiTags('Ticket Priorities')
+@ApiBearerAuth('access-token')
+@Controller('api/ticket-priorities')
+export class TicketPriorityController {
+  constructor(private readonly ticketPriorityService: TicketPriorityService) {}
+
+  @Post()
+  @ApiOperation({ summary: 'Create a new Ticket Priority' })
+  @ApiBody({ type: CreateTicketPriorityDto })
+  @ApiOkResponse({ type: TicketPriority })
+  async create(
+    @Body() createTicketPriorityDto: CreateTicketPriorityDto,
+  ): Promise<TicketPriority> {
+    return this.ticketPriorityService.create(createTicketPriorityDto);
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'Get all Ticket Priorities' })
+  @ApiOkResponse({ type: [TicketPriority] })
+  async findAll(): Promise<TicketPriority[]> {
+    return this.ticketPriorityService.findAll();
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: 'Get a Ticket Priority by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Ticket Priority to retrieve',
+  })
+  @ApiOkResponse({ type: TicketPriority })
+  async findOne(@Param('id') id: string): Promise<TicketPriority> {
+    return this.ticketPriorityService.findOne(id);
+  }
+
+  @Patch(':id')
+  @ApiOperation({ summary: 'Update a Ticket Priority by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Ticket Priority to update',
+  })
+  @ApiBody({ type: UpdateTicketPriorityDto })
+  @ApiOkResponse({ type: TicketPriority })
+  async update(
+    @Param('id') id: string,
+    @Body() updateTicketPriorityDto: UpdateTicketPriorityDto,
+  ): Promise<TicketPriority> {
+    return this.ticketPriorityService.update(id, updateTicketPriorityDto);
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete a Ticket Priority by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Ticket Priority to delete',
+  })
+  @ApiResponse({ status: 200, description: 'Ticket Priority deleted', type: TicketPriority })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  @ApiResponse({ status: 404, description: 'Ticket Priority not found' })
+  async remove(@Param('id') id: string): Promise<TicketPriority> {
+    const priority = await this.ticketPriorityService.findOne(id);
+    if (!priority) {
+      throw new NotFoundException('Ticket Priority not found');
+    }
+    await this.ticketPriorityService.remove(id);
+    return priority;
+  }
+}
+</file>
+
+<file path="src/ticket-priority/ticket-priority.module.ts">
+import { Module } from '@nestjs/common';
+import { TicketPriorityService } from './ticket-priority.service';
+import { TicketPriorityController } from './ticket-priority.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { TicketPriority } from './entities/ticket-priority.entity';
+
+@Module({
+  imports: [TypeOrmModule.forFeature([TicketPriority])],
+  controllers: [TicketPriorityController], 
+  providers: [TicketPriorityService],
+  exports: [TicketPriorityService],
+})
+export class TicketPriorityModule {}
+</file>
+
+<file path="src/ticket-priority/ticket-priority.service.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { TicketPriorityService } from './ticket-priority.service';
+
+describe('TicketPriorityService', () => {
+  let service: TicketPriorityService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [TicketPriorityService],
+    }).compile();
+
+    service = module.get<TicketPriorityService>(TicketPriorityService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/ticket-priority/ticket-priority.service.ts">
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { CreateTicketPriorityDto } from 'src/ticket-priority/dto/create-ticket-priority.dto';
+import { UpdateTicketPriorityDto } from 'src/ticket-priority/dto/update-ticket-priority.dto';
+import { TicketPriority } from 'src/ticket-priority/entities/ticket-priority.entity';
+import { Repository } from 'typeorm';
+
+@Injectable()
+export class TicketPriorityService {
+  constructor(
+    @InjectRepository(TicketPriority)
+    private readonly ticketPriorityRepository: Repository<TicketPriority>,
+  ) {}
+
+  async create(
+    createTicketPriorityDto: CreateTicketPriorityDto,
+  ): Promise<TicketPriority> {
+    const priority = this.ticketPriorityRepository.create(
+      createTicketPriorityDto,
+    );
+    return this.ticketPriorityRepository.save(priority);
+  }
+
+  async findAll(): Promise<TicketPriority[]> {
+    return this.ticketPriorityRepository.find();
+  }
+
+  async findOne(id: string): Promise<TicketPriority> {
+    const priority = await this.ticketPriorityRepository.findOne({
+      where: { priority_id: id },
+    });
+    if (!priority) {
+      throw new NotFoundException(`Ticket Priority with ID ${id} not found`);
+    }
+    return priority;
+  }
+
+  async update(
+    id: string,
+    updateTicketPriorityDto: UpdateTicketPriorityDto,
+  ): Promise<TicketPriority> {
+    const priority = await this.findOne(id);
+    Object.assign(priority, updateTicketPriorityDto);
+    return this.ticketPriorityRepository.save(priority);
+  }
+
+  async remove(id: string): Promise<TicketPriority> {
+    const priority = await this.findOne(id);
+    await this.ticketPriorityRepository.remove(priority);
+    return priority;
+  }
+}
+</file>
+
+<file path="src/ticket-status/dto/create-ticket-status.dto.ts">
+import { ApiProperty } from "@nestjs/swagger";
+import { IsNotEmpty, IsString } from "class-validator";
+
+export class CreateTicketStatusDto {
+    @ApiProperty()
+    @IsString()
+    @IsNotEmpty()
+    status_name: string;
+}
+</file>
+
+<file path="src/ticket-status/dto/update-ticket-status.dto.ts">
+import { PartialType } from '@nestjs/swagger';
+import { CreateTicketStatusDto } from './create-ticket-status.dto';
+
+export class UpdateTicketStatusDto extends PartialType(CreateTicketStatusDto) {}
+</file>
+
+<file path="src/ticket-status/entities/ticket-status.entity.ts">
+import { Ticket } from 'src/ticket/entities/ticket.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+
+
+@Entity()
+export class TicketStatus {
+  @PrimaryGeneratedColumn('uuid')
+  status_id: string;
+
+  @Column({ unique: true, length: 50 })
+  status_name: string;
+
+  @OneToMany(() => Ticket, (ticket) => ticket.status)
+  tickets: Ticket[];
+}
+</file>
+
+<file path="src/ticket-status/ticket-status.controller.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { TicketStatusController } from './ticket-status.controller';
+import { TicketStatusService } from './ticket-status.service';
+
+describe('TicketStatusController', () => {
+  let controller: TicketStatusController;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [TicketStatusController],
+      providers: [TicketStatusService],
+    }).compile();
+
+    controller = module.get<TicketStatusController>(TicketStatusController);
+  });
+
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/ticket-status/ticket-status.controller.ts">
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  NotFoundException,
+} from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOkResponse,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { TicketStatus } from './entities/ticket-status.entity';
+import { CreateTicketStatusDto } from './dto/create-ticket-status.dto';
+import { UpdateTicketStatusDto } from './dto/update-ticket-status.dto';
+import { TicketStatusService } from './ticket-status.service';
+
+@ApiTags('Ticket Statuses')
+@ApiBearerAuth('access-token')
+@Controller('api/ticket-status')
+export class TicketStatusController {
+  constructor(private readonly ticketStatusService:TicketStatusService) {}
+
+  @Post()
+  @ApiOperation({ summary: 'Create a new TicketStatus' })
+  @ApiBody({ type: CreateTicketStatusDto })
+  @ApiOkResponse({ type: TicketStatus })
+  async create(@Body() createTicketStatusDto: CreateTicketStatusDto): Promise<TicketStatus> {
+    return this.ticketStatusService.create(createTicketStatusDto);
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'Get all TicketStatuses' })
+  @ApiOkResponse({ type: [TicketStatus] })
+  async findAll(): Promise<TicketStatus[]> {
+    return this.ticketStatusService.findAll();
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: 'Get a Ticket Status by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Ticket Status to retrieve',
+  })
+  @ApiOkResponse({ type: TicketStatus })
+  async findOne(@Param('id') id: string): Promise<TicketStatus> {
+    return this.ticketStatusService.findOne(id);
+  }
+
+  @Patch(':id')
+  @ApiOperation({ summary: 'Update a Ticket Status by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Ticket Status to update',
+  })
+  @ApiBody({ type: UpdateTicketStatusDto })
+  @ApiOkResponse({ type:TicketStatus })
+  async update(
+    @Param('id') id: string,
+    @Body() updateTicketStatusDto: UpdateTicketStatusDto,
+  ): Promise<TicketStatus> {
+    return this.ticketStatusService.update(id, updateTicketStatusDto);
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete a Ticket Status by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the Ticket Status to delete',
+  })
+  @ApiResponse({ status: 200, description: 'Ticket Status deleted', type: TicketStatus })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  @ApiResponse({ status: 404, description: 'Ticket Status not found' })
+  async remove(@Param('id') id: string): Promise<TicketStatus> {
+    const ticketStatus = await this.ticketStatusService.findOne(id);
+    if (!ticketStatus) {
+      throw new NotFoundException('Ticket Status not found');
+    }
+    await this.ticketStatusService.remove(id);
+    return ticketStatus;
+  }
+  
+}
+</file>
+
+<file path="src/ticket-status/ticket-status.module.ts">
+import { Module } from '@nestjs/common';
+import { TicketStatusService } from './ticket-status.service';
+import { TicketStatusController } from './ticket-status.controller';
+import { TicketStatus } from './entities/ticket-status.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+@Module({
+  imports: [TypeOrmModule.forFeature([TicketStatus])],
+  controllers: [TicketStatusController], 
+  providers: [TicketStatusService],
+  exports: [TicketStatusService],
+})
+export class TicketStatusModule {}
+</file>
+
+<file path="src/ticket-status/ticket-status.service.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { TicketStatusService } from './ticket-status.service';
+
+describe('TicketStatusService', () => {
+  let service: TicketStatusService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [TicketStatusService],
+    }).compile();
+
+    service = module.get<TicketStatusService>(TicketStatusService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/ticket-status/ticket-status.service.ts">
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { CreateTicketStatusDto } from './dto/create-ticket-status.dto';
+import { UpdateTicketStatusDto } from './dto/update-ticket-status.dto';
+import { TicketStatus } from './entities/ticket-status.entity';
+
+@Injectable()
+export class TicketStatusService {
+  constructor(
+    @InjectRepository(TicketStatus)
+    private readonly ticketStatusRepository: Repository<TicketStatus>,
+  ) {}
+
+  async create(createTicketStatusDto: CreateTicketStatusDto): Promise<TicketStatus> {
+    const ticketStatus = this.ticketStatusRepository.create(createTicketStatusDto);
+    return this.ticketStatusRepository.save(ticketStatus);
+  }
+
+  async findAll(): Promise<TicketStatus[]> {
+    return this.ticketStatusRepository.find();
+  }
+
+  async findOne(id: string): Promise<TicketStatus> {
+    const ticketStatus = await this.ticketStatusRepository.findOne({ where: { status_id: id } });
+    if (!ticketStatus) {
+      throw new NotFoundException(`TicketStatus with ID ${id} not found`);
+    }
+    return ticketStatus;
+  }
+
+  async update(id: string, updateTicketStatusDto: UpdateTicketStatusDto): Promise<TicketStatus> {
+    const ticketStatus = await this.findOne(id);
+    Object.assign(TicketStatus, updateTicketStatusDto);
+    return this.ticketStatusRepository.save(ticketStatus);
+  }
+
+  async remove(id: string): Promise<TicketStatus> {
+    const ticketStatus = await this.findOne(id);
+    await this.ticketStatusRepository.remove(ticketStatus);
+    return ticketStatus;
+  }
+
+  async findByStatusName(statusName: string): Promise<TicketStatus> {
+    const ticketStatus = await this.ticketStatusRepository.findOne({ 
+      where: { status_name: statusName } 
+    });
+    if (!ticketStatus) {
+      throw new NotFoundException(`Status with name '${statusName}' not found`);
+    }
+    return ticketStatus;
+  }
+
+  
+}
+</file>
+
+<file path="src/ticket/dto/create-ticket.dto.ts">
+import { ApiProperty } from '@nestjs/swagger';
+import { Transform } from 'class-transformer';
+import { IsNotEmpty, IsOptional, IsString, IsUUID, MaxLength, IsDateString } from 'class-validator';
+
+export class CreateTicketDto {
+    @ApiProperty({ description: 'Unique ticket number', maxLength: 40 })
+    @IsString()
+    @IsNotEmpty()
+    @MaxLength(40)
+    ticket_number: string;
+
+    @ApiProperty({ description: 'Ticket description', required: false })
+    @IsOptional()
+    @IsString()
+    description?: string;
+
+    @ApiProperty({ description: 'Requester ID (user who raised the ticket)' })
+    @IsUUID()
+    @IsNotEmpty()
+    requester_id: string;
+
+    @ApiProperty({ description: 'Department ID', required: false })
+    @IsOptional()
+    @IsUUID()
+    department_id?: string;
+
+    @ApiProperty({ description: 'Category ID', required: false })
+    @IsOptional()
+    @IsUUID()
+    category_id?: string;
+
+    @ApiProperty({ description: 'Priority ID' })
+    @IsUUID()
+    @IsNotEmpty()
+    priority_id: string;
+
+    @ApiProperty({ description: 'Status ID' })
+    @IsUUID()
+    @IsNotEmpty()
+    status_id: string;
+
+    @ApiProperty({ description: 'Manager ID', required: false })
+    @IsOptional()
+    @IsUUID()
+    manager_id?: string;
+
+    @ApiProperty({ description: 'Manager comment', required: false })
+    @IsOptional()
+    @IsString()
+    manager_comment?: string;
+
+
+
+    @ApiProperty({ description: 'Ticket closed date', required: false })
+    @IsOptional()
+    @IsDateString()
+    @Transform(({ value }) => (value === '' ? undefined : value))
+    closed_at?: Date;
+
+    @ApiProperty({ description: 'Ticket cancelled date', required: false })
+    @IsOptional()
+    @IsDateString()
+    @Transform(({ value }) => (value === '' ? undefined : value))
+    cancelled_at?: Date;
+
+
+    @ApiProperty({ description: 'Resolution summary', required: false })
+    @IsOptional()
+    @IsString()
+    resolution_summary?: string;
+}
+</file>
+
+<file path="src/ticket/dto/update-ticket.dto.ts">
+import { PartialType } from '@nestjs/swagger';
+import { CreateTicketDto } from './create-ticket.dto';
+
+export class UpdateTicketDto extends PartialType(CreateTicketDto) {}
+</file>
+
+<file path="src/ticket/entities/ticket.entity.ts">
+import { Department } from 'src/department/entities/department.entity';
+import { TicketAssignment } from 'src/ticket-assignment/entities/ticket-assignment.entity';
+import { TicketCategory } from 'src/ticket-category/entities/ticket-category.entity';
+import { TicketPriority } from 'src/ticket-priority/entities/ticket-priority.entity';
+import { TicketStatus } from 'src/ticket-status/entities/ticket-status.entity';
+import { User } from 'src/user/entities/user.entity';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  OneToMany,
+  JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+
+@Entity({ name: 'tickets' })
+export class Ticket {
+  @PrimaryGeneratedColumn('uuid')
+  ticket_id: string;
+
+  @Column({ length: 40 })
+  ticket_number: string;
+
+  @Column({ type: 'text', nullable: true })
+  description: string;
+
+  // Relations
+  @ManyToOne(() => User, (user) => user.ticket_requests, { nullable: false })
+  @JoinColumn({ name: 'requester_id' })
+  requester: User;
+
+  @ManyToOne(() => Department, (department) => department.tickets, { nullable: true })
+  @JoinColumn({ name: 'department_id' })
+  department: Department;
+
+  @ManyToOne(() => TicketCategory, (category) => category.tickets, { nullable: true })
+  @JoinColumn({ name: 'category_id' })
+  category: TicketCategory;
+
+  @ManyToOne(() => TicketPriority, (priority) => priority.tickets, { nullable: false })
+  @JoinColumn({ name: 'priority_id' })
+  priority: TicketPriority;
+
+  @ManyToOne(() => TicketStatus, (status) => status.tickets, { nullable: false })
+  @JoinColumn({ name: 'status_id' })
+  status: TicketStatus;
+
+  @ManyToOne(() => User, (user) => user.managed_tickets, { nullable: true })
+  @JoinColumn({ name: 'manager_id' })
+  manager: User;
+
+  @Column({ type: 'timestamp', nullable: true })
+  manager_approved_at: Date;
+
+  @Column({ type: 'text', nullable: true })
+  manager_comment: string;
+
+  @CreateDateColumn({ type: 'timestamp' })
+  created_at: Date;
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  updated_at: Date;
+
+  @Column({ type: 'timestamp', nullable: true })
+  closed_at: Date;
+
+  @Column({ type: 'timestamp', nullable: true })
+  cancelled_at: Date;
+
+  @Column({ type: 'text', nullable: true })
+  resolution_summary: string;
+
+  @OneToMany(() => TicketAssignment, (assignment) => assignment.ticket)
+  assignments: TicketAssignment[];
+}
+</file>
+
+<file path="src/ticket/ticket.controller.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { TicketController } from './ticket.controller';
+import { TicketService } from './ticket.service';
+
+describe('TicketController', () => {
+  let controller: TicketController;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [TicketController],
+      providers: [TicketService],
+    }).compile();
+
+    controller = module.get<TicketController>(TicketController);
+  });
+
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/ticket/ticket.controller.ts">
+import {
+  Controller,
+  Get,
+  Post,
+  Patch,
+  Param,
+  Body,
+  Delete,
+  NotFoundException,
+} from '@nestjs/common';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiBody,
+  ApiOkResponse,
+  ApiParam,
+  ApiResponse,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
+import { TicketService } from './ticket.service';
+import { CreateTicketDto } from './dto/create-ticket.dto';
+import { UpdateTicketDto } from './dto/update-ticket.dto';
+import { Ticket } from './entities/ticket.entity';
+
+@ApiTags('Tickets')
+@ApiBearerAuth('access-token')
+@Controller('api/tickets')
+export class TicketController {
+  constructor(private readonly ticketService: TicketService) { }
+
+  @Post()
+  @ApiOperation({ summary: 'Create a new Ticket' })
+  @ApiBody({ type: CreateTicketDto })
+  @ApiOkResponse({ type: Ticket })
+  async create(@Body() createTicketDto: CreateTicketDto): Promise<Ticket> {
+    return this.ticketService.create(createTicketDto);
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'Get all Tickets' })
+  @ApiOkResponse({ type: [Ticket] })
+  async findAll(): Promise<Ticket[]> {
+    return this.ticketService.findAll();
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: 'Get a Ticket by ID' })
+  @ApiParam({ name: 'id', required: true, description: 'The Ticket ID to retrieve' })
+  @ApiOkResponse({ type: Ticket })
+  async findOne(@Param('id') id: string): Promise<Ticket> {
+    return this.ticketService.findOne(id);
+  }
+
+  @Patch(':id')
+  @ApiOperation({ summary: 'Update a Ticket by ID' })
+  @ApiParam({ name: 'id', required: true, description: 'The Ticket ID to update' })
+  @ApiBody({ type: UpdateTicketDto })
+  @ApiOkResponse({ type: Ticket })
+  async update(
+    @Param('id') id: string,
+    @Body() updateTicketDto: UpdateTicketDto,
+  ): Promise<Ticket> {
+    return this.ticketService.update(id, updateTicketDto);
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete a Ticket by ID' })
+  @ApiParam({ name: 'id', required: true, description: 'The Ticket ID to delete' })
+  @ApiResponse({ status: 200, description: 'Ticket deleted', type: Ticket })
+  @ApiResponse({ status: 404, description: 'Ticket not found' })
+  async remove(@Param('id') id: string): Promise<Ticket> {
+    const ticket = await this.ticketService.findOne(id);
+    if (!ticket) {
+      throw new NotFoundException(`Ticket ${id} not found`);
+    }
+    await this.ticketService.remove(id);
+    return ticket;
+  }
+
+  @Get('requester/:requester_id')//for employee dashboard
+  @ApiOperation({ summary: 'Get all Tickets by Requester ID' })
+  @ApiParam({ name: 'requester_id', required: true, description: 'The requester ID to filter tickets' })
+  @ApiOkResponse({ type: [Ticket] })
+  async findByRequester(@Param('requester_id') requester_id: string): Promise<Ticket[]> {
+    return this.ticketService.findByRequester(requester_id);
+  }
+
+  @Get('department/:department_id')//for manger dashboard views tickets for approval
+  @ApiOperation({ summary: 'Get all Tickets by Department ID' })
+  @ApiParam({ name: 'department_id', required: true, description: 'The department ID to filter tickets' })
+  @ApiOkResponse({ type: [Ticket] })
+  async findByDepartment(@Param('department_id') department_id: string): Promise<Ticket[]> {
+    return this.ticketService.findByDepartment(department_id);
+  }
+
+  @Get('department/:department_id/status/:status_id')//for manager dashboard filter tickets by status
+  @ApiOperation({ summary: 'Get all Tickets by Department ID and Status ID' })
+  @ApiParam({ name: 'department_id', required: true, description: 'The department ID to filter tickets' })
+  @ApiParam({ name: 'status_id', required: true, description: 'The status ID to filter tickets' })
+  @ApiOkResponse({ type: [Ticket] })
+  async findByDepartmentAndStatus(
+    @Param('department_id') department_id: string,
+    @Param('status_id') status_id: string,
+  ): Promise<Ticket[]> {
+    return this.ticketService.findByDepartmentAndStatus(department_id, status_id);
+  }
+
+  @Get('status/:status_id')
+  @ApiOperation({ summary: 'Get all Tickets by Status ID' })
+  @ApiParam({ name: 'status_id', required: true, description: 'The status ID to filter tickets' })
+  @ApiOkResponse({ type: [Ticket] })
+  async findByStatus(@Param('status_id') status_id: string): Promise<Ticket[]> {
+    return this.ticketService.findByStatus(status_id);
+  }
+
+  @Get('count')//for admin dashboard and IT dashboard
+@ApiOperation({ summary: 'Count all Tickets' })
+@ApiOkResponse({ type: Number })
+async countAll(): Promise<number> {
+  return this.ticketService.countAll();
+}
+
+@Get('count/status/:status_id')//for admin dashboard and IT dashboard
+@ApiOperation({ summary: 'Count all Tickets by Status ID' })
+@ApiParam({ name: 'status_id', required: true, description: 'The status ID to filter tickets' })
+@ApiOkResponse({ type: Number })
+async countByStatus(@Param('status_id') status_id: string): Promise<number> {
+  return this.ticketService.countByStatus(status_id);
+}
+
+@Get('count/department/:department_id/status/:status_name')//for manager dashboard
+@ApiOperation({ summary: 'Count Tickets by Department ID and Status ID' })
+@ApiParam({ name: 'department_id', required: true, description: 'The department ID to filter tickets' })
+@ApiParam({ name: 'status_name', required: true, description: 'The status name to filter tickets' })
+@ApiOkResponse({ type: Number })
+async countByDepartmentAndStatus(
+  @Param('department_id') department_id: string,
+  @Param('status_name') status_name: string,
+): Promise<number> {
+  return this.ticketService.countByDepartmentAndStatus(department_id, status_name);
+}
+
+}
+</file>
+
+<file path="src/ticket/ticket.module.ts">
+import { Module } from '@nestjs/common';
+import { TicketService } from './ticket.service';
+import { TicketController } from './ticket.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Department } from 'src/department/entities/department.entity';
+import { TicketCategory } from 'src/ticket-category/entities/ticket-category.entity';
+import { TicketPriority } from 'src/ticket-priority/entities/ticket-priority.entity';
+import { TicketStatus } from 'src/ticket-status/entities/ticket-status.entity';
+import { User } from 'src/user/entities/user.entity';
+import { Ticket } from './entities/ticket.entity';
+
+@Module({
+  imports: [
+    TypeOrmModule.forFeature([
+      Ticket,
+      User,
+      Department,
+      TicketCategory,
+      TicketPriority,
+      TicketStatus,
+    ]),
+  ],
+  providers: [TicketService],
+  controllers: [TicketController],
+  exports: [TicketService],
+})
+export class TicketModule {}
+</file>
+
+<file path="src/ticket/ticket.service.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { TicketService } from './ticket.service';
+
+describe('TicketService', () => {
+  let service: TicketService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [TicketService],
+    }).compile();
+
+    service = module.get<TicketService>(TicketService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/ticket/ticket.service.ts">
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ILike, Repository } from 'typeorm';
+import { Ticket } from './entities/ticket.entity';
+import { CreateTicketDto } from './dto/create-ticket.dto';
+import { UpdateTicketDto } from './dto/update-ticket.dto';
+import { User } from 'src/user/entities/user.entity';
+import { Department } from 'src/department/entities/department.entity';
+import { TicketCategory } from 'src/ticket-category/entities/ticket-category.entity';
+import { TicketPriority } from 'src/ticket-priority/entities/ticket-priority.entity';
+import { TicketStatus } from 'src/ticket-status/entities/ticket-status.entity';
+
+@Injectable()
+export class TicketService {
+  constructor(
+    @InjectRepository(Ticket)
+    private readonly ticketRepository: Repository<Ticket>,
+
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+
+    @InjectRepository(Department)
+    private readonly departmentRepository: Repository<Department>,
+
+    @InjectRepository(TicketCategory)
+    private readonly categoryRepository: Repository<TicketCategory>,
+
+    @InjectRepository(TicketPriority)
+    private readonly priorityRepository: Repository<TicketPriority>,
+
+    @InjectRepository(TicketStatus)
+    private readonly statusRepository: Repository<TicketStatus>,
+  ) { }
+
+  async create(createDto: CreateTicketDto): Promise<Ticket> {
+    const requester = await this.userRepository.findOne({ where: { user_id: createDto.requester_id } });
+    if (!requester) throw new NotFoundException(`Requester ${createDto.requester_id} not found`);
+    // Generate unique ticket number
+    const ticket_number = await this.generateTicketNumber();
+
+    const ticket = this.ticketRepository.create({
+      ticket_number,
+      description: createDto.description,
+      requester,
+    });
+
+    if (createDto.department_id) {
+      const department = await this.departmentRepository.findOne({ where: { department_id: createDto.department_id } });
+      if (!department) throw new NotFoundException(`Department ${createDto.department_id} not found`);
+      ticket.department = department;
+    }
+
+    if (createDto.category_id) {
+      const category = await this.categoryRepository.findOne({ where: { category_id: createDto.category_id } });
+      if (!category) throw new NotFoundException(`Category ${createDto.category_id} not found`);
+      ticket.category = category;
+    }
+
+    const priority = await this.priorityRepository.findOne({ where: { priority_id: createDto.priority_id } });
+    if (!priority) throw new NotFoundException(`Priority ${createDto.priority_id} not found`);
+    ticket.priority = priority;
+
+    const status = await this.statusRepository.findOne({ where: { status_id: createDto.status_id } });
+    if (!status) throw new NotFoundException(`Status ${createDto.status_id} not found`);
+    ticket.status = status;
+
+    if (createDto.manager_id) {
+      const manager = await this.userRepository.findOne({ where: { user_id: createDto.manager_id } });
+      if (!manager) throw new NotFoundException(`Manager ${createDto.manager_id} not found`);
+      ticket.manager = manager;
+    }
+
+    if (createDto.manager_comment) ticket.manager_comment = createDto.manager_comment;
+
+    return this.ticketRepository.save(ticket);
+  }
+
+  async findAll(): Promise<Ticket[]> {
+    return this.ticketRepository.find({
+      relations: ['requester', 'department', 'category', 'priority', 'status', 'manager', 'assignments'],
+    });
+  }
+
+  async findOne(id: string): Promise<Ticket> {
+    const ticket = await this.ticketRepository.findOne({
+      where: { ticket_id: id },
+      relations: ['requester', 'department', 'category', 'priority', 'status', 'manager', 'assignments'],
+    });
+    if (!ticket) throw new NotFoundException(`Ticket ${id} not found`);
+    return ticket;
+  }
+
+  async update(id: string, updateTicketDto: UpdateTicketDto): Promise<Ticket> {
+    const ticket = await this.findOne(id);
+
+    if (updateTicketDto.ticket_number !== undefined) ticket.ticket_number = updateTicketDto.ticket_number;
+    if (updateTicketDto.description !== undefined) ticket.description = updateTicketDto.description;
+
+    if (updateTicketDto.requester_id) {
+      const requester = await this.userRepository.findOne({ where: { user_id: updateTicketDto.requester_id } });
+      if (!requester) throw new NotFoundException(`Requester ${updateTicketDto.requester_id} not found`);
+      ticket.requester = requester;
+    }
+
+    if (updateTicketDto.department_id) {
+      const department = await this.departmentRepository.findOne({ where: { department_id: updateTicketDto.department_id } });
+      if (!department) throw new NotFoundException(`Department ${updateTicketDto.department_id} not found`);
+      ticket.department = department;
+    }
+
+    if (updateTicketDto.category_id) {
+      const category = await this.categoryRepository.findOne({ where: { category_id: updateTicketDto.category_id } });
+      if (!category) throw new NotFoundException(`Category ${updateTicketDto.category_id} not found`);
+      ticket.category = category;
+    }
+
+    if (updateTicketDto.priority_id) {
+      const priority = await this.priorityRepository.findOne({ where: { priority_id: updateTicketDto.priority_id } });
+      if (!priority) throw new NotFoundException(`Priority ${updateTicketDto.priority_id} not found`);
+      ticket.priority = priority;
+    }
+
+    if (updateTicketDto.status_id) {
+      const status = await this.statusRepository.findOne({ where: { status_id: updateTicketDto.status_id } });
+      if (!status) throw new NotFoundException(`Status ${updateTicketDto.status_id} not found`);
+      ticket.status = status;
+    }
+
+    if (updateTicketDto.manager_id) {
+      const manager = await this.userRepository.findOne({ where: { user_id: updateTicketDto.manager_id } });
+      if (!manager) throw new NotFoundException(`Manager ${updateTicketDto.manager_id} not found`);
+      ticket.manager = manager;
+    }
+
+    if (updateTicketDto.manager_comment !== undefined) ticket.manager_comment = updateTicketDto.manager_comment;
+    if (updateTicketDto.closed_at !== undefined) ticket.closed_at = updateTicketDto.closed_at;
+    if (updateTicketDto.cancelled_at !== undefined) ticket.cancelled_at = updateTicketDto.cancelled_at;
+    if (updateTicketDto.resolution_summary !== undefined) ticket.resolution_summary = updateTicketDto.resolution_summary;
+
+    return this.ticketRepository.save(ticket);
+  }
+
+  async remove(id: string): Promise<Ticket> {
+    const ticket = await this.findOne(id);
+    return this.ticketRepository.remove(ticket);
+  }
+
+
+  /**
+ * Generate a unique ticket number in the format TN-001.
+ */
+  private async generateTicketNumber(): Promise<string> {
+    // Get the latest ticket number
+    const lastTicket = await this.ticketRepository
+      .createQueryBuilder('ticket')
+      .orderBy('ticket.ticket_number', 'DESC')
+      .getOne();
+
+    if (!lastTicket) return 'TN-001';
+
+    const lastNumber = parseInt(lastTicket.ticket_number.replace('TN-', ''), 10);
+    const nextNumber = lastNumber + 1;
+
+    // Pad with leading zeros to 3 digits
+    return `TN-${nextNumber.toString().padStart(3, '0')}`;
+  }
+
+  async findByRequester(requester_id: string): Promise<Ticket[]> {
+    const requester = await this.userRepository.findOne({ where: { user_id: requester_id } });
+    if (!requester) throw new NotFoundException(`Requester ${requester_id} not found`);
+
+    return this.ticketRepository.find({
+      where: { requester: { user_id: requester_id } },
+      relations: ['requester', 'department', 'category', 'priority', 'status', 'manager', 'assignments'],
+    });
+  }
+
+  async findByDepartment(department_id: string): Promise<Ticket[]> {
+    const department = await this.departmentRepository.findOne({ where: { department_id } });
+    if (!department) throw new NotFoundException(`Department ${department_id} not found`);
+
+    return this.ticketRepository.find({
+      where: { department: { department_id } },
+      relations: ['requester', 'department', 'category', 'priority', 'status', 'manager', 'assignments'],
+    });
+  }
+
+  async findByDepartmentAndStatus(department_id: string, status_id: string): Promise<Ticket[]> {
+    const department = await this.departmentRepository.findOne({ where: { department_id } });
+    if (!department) throw new NotFoundException(`Department ${department_id} not found`);
+
+    const status = await this.statusRepository.findOne({ where: { status_id } });
+    if (!status) throw new NotFoundException(`Status ${status_id} not found`);
+
+    return this.ticketRepository.find({
+      where: {
+        department: { department_id },
+        status: { status_id },
+      },
+      relations: ['requester', 'department', 'category', 'priority', 'status', 'manager', 'assignments'],
+    });
+  }
+
+  async findByStatus(status_id: string): Promise<Ticket[]> {
+    const status = await this.statusRepository.findOne({ where: { status_id } });
+    if (!status) throw new NotFoundException(`Status ${status_id} not found`);
+
+    return this.ticketRepository.find({
+      where: { status: { status_id } },
+      relations: ['requester', 'department', 'category', 'priority', 'status', 'manager', 'assignments'],
+    });
+  }
+
+  async countAll(): Promise<number> {
+    return this.ticketRepository.count();
+  }
+
+  async countByStatus(status_id: string): Promise<number> {
+    const status = await this.statusRepository.findOne({ where: { status_id } });
+    if (!status) throw new NotFoundException(`Status ${status_id} not found`);
+
+    return this.ticketRepository.count({ where: { status: { status_id } } });
+  }
+
+  async countByDepartmentAndStatus(department_id: string, statusName: string): Promise<number> {
+  return this.ticketRepository
+    .createQueryBuilder('ticket')
+    .leftJoin('ticket.department', 'department')
+    .leftJoin('ticket.status', 'status')
+    .where('department.department_id = :departmentId', { departmentId: department_id })
+    .andWhere('LOWER(status.status_name) = LOWER(:statusName)', { statusName })
+    .getCount();
+}
+
+}
+</file>
+
+<file path="src/user/dto/create-user.dto.ts">
+import { ApiProperty } from '@nestjs/swagger';
+import { IsString, IsNotEmpty, IsEmail, IsUUID } from 'class-validator';
+
+export class CreateUserDto {
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  name: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  surname: string;
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  password: string;
+
+  @ApiProperty()
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  role_id: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  department_id: string;
+  
+}
+</file>
+
+<file path="src/user/dto/update-user.dto.ts">
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateUserDto } from './create-user.dto';
+
+export class UpdateUserDto extends PartialType(CreateUserDto) {}
+</file>
+
+<file path="src/user/entities/user.entity.ts">
+import { Department } from 'src/department/entities/department.entity';
+import { Role } from 'src/role/entities/role.entity';
+import { StaffPerformanceCounter } from 'src/staff-performance/entities/staff-performance.entity';
+import { TicketAssignment } from 'src/ticket-assignment/entities/ticket-assignment.entity';
+import { Ticket } from 'src/ticket/entities/ticket.entity';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+
+
+@Entity()
+export class User {
+    @PrimaryGeneratedColumn('uuid')
+    user_id: string;
+
+    @Column()
+    name: string;
+
+    @Column()
+    surname: string;
+
+    @Column()
+    password: string;
+
+    @Column({ unique: true })
+    email: string;
+
+    // Many users belong to one role
+    @ManyToOne(() => Role, (role) => role.users, { eager: true })
+    @JoinColumn({ name: 'role_id' })
+    role: Role;
+
+    // Many users belong to one department
+    @ManyToOne(() => Department, (department) => department.users, { eager: true })
+    @JoinColumn({ name: 'department_id' })
+    department: Department;
+
+    @CreateDateColumn({ type: 'timestamp' })
+    assigned_at: Date;
+
+    @UpdateDateColumn({ type: 'timestamp' })
+    updated_at: Date;
+
+    // Tickets created by this user
+    @OneToMany(() => Ticket, (ticket) => ticket.requester)
+    ticket_requests: Ticket[];
+
+    // Tickets managed by this user
+    @OneToMany(() => Ticket, (ticket) => ticket.manager)
+    managed_tickets: Ticket[];
+
+    // Tickets assigned to this user
+    @OneToMany(() => TicketAssignment, (assignment) => assignment.assigned_to)
+    assigned_tickets: TicketAssignment[];
+
+    // Staff performance counters
+    @OneToMany(() => StaffPerformanceCounter, (counter) => counter.user)
+    staff_performance_counters: StaffPerformanceCounter[];
+
+}
+</file>
+
+<file path="src/user/user.controller.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { UserController } from './user.controller';
+import { UserService } from './user.service';
+
+describe('UserController', () => {
+  let controller: UserController;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [UserController],
+      providers: [UserService],
+    }).compile();
+
+    controller = module.get<UserController>(UserController);
+  });
+
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/user/user.controller.ts">
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  NotFoundException,
+} from '@nestjs/common';
+import { UserService } from './user.service';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOkResponse,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { User } from './entities/user.entity';
+import { Public } from 'src/auth/public.decorator';
+
+@ApiTags('Users')
+@ApiBearerAuth('access-token')
+@Controller('api/user')
+export class UserController {
+  constructor(private readonly userService: UserService) {}
+
+
+  @Post()
+  @ApiOperation({ summary: 'Create a new User' })
+  @ApiOkResponse({ type: User })
+  @Public()
+  async create(@Body() createUserDto: CreateUserDto): Promise<User> {
+    return this.userService.create(createUserDto);
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'Get all Users' })
+  @ApiOkResponse({ type: [User] })
+  async findAll(): Promise<User[]> {
+    return this.userService.findAll();
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: 'Get a User by ID' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    description: 'The ID of the User to retrieve',
+  })
+  @ApiOkResponse({ type: User })
+  async findOne(@Param('id') id: string): Promise<User> {
+    return this.userService.findOne(id);
+  }
+
+  @Patch(':id')
+  @ApiOperation({ summary: 'Update a User by ID' })
+  @ApiParam({ name: 'id', required: true, description: 'The ID of the User to update' })
+  @ApiBody({ type: UpdateUserDto })
+  @ApiOkResponse({ type: User })  
+  async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto): Promise<User> {
+    return this.userService.update(id, updateUserDto);
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete a User by ID' })
+  @ApiParam({ name: 'id', required: true, description: 'The ID of the User to delete' })
+  @ApiResponse({ status: 200, description: 'User deleted', type: User })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  @ApiResponse({ status: 404, description: 'User not found' })
+  async remove(@Param('id') id: string): Promise<User> {
+    const user = await this.userService.findOne(id);
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+    await this.userService.remove(id);
+    return user;
+  }
+}
+</file>
+
+<file path="src/user/user.module.ts">
+import { Module } from '@nestjs/common';
+import { UserService } from './user.service';
+import { UserController } from './user.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './entities/user.entity';
+import { Role } from 'src/role/entities/role.entity';
+import { Department } from 'src/department/entities/department.entity';
+
+@Module({
+  imports: [TypeOrmModule.forFeature([User, Role,Department])],
+  controllers: [UserController], 
+  providers: [UserService],
+  exports: [UserService],
+})
+export class UserModule {}
+</file>
+
+<file path="src/user/user.service.spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { UserService } from './user.service';
+
+describe('UserService', () => {
+  let service: UserService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [UserService],
+    }).compile();
+
+    service = module.get<UserService>(UserService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
+</file>
+
+<file path="src/user/user.service.ts">
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { User } from './entities/user.entity';
+import { Role } from '../role/entities/role.entity';
+import { Department } from '../department/entities/department.entity';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { encodePassword } from 'src/utils/bcrypt';
+import { MailService } from 'src/mail/mail.service';
+import { generateRandomPassword } from 'src/utils/password.util';
+
+@Injectable()
+export class UserService {
+  constructor(
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+
+    @InjectRepository(Role)
+    private readonly roleRepository: Repository<Role>,
+
+    @InjectRepository(Department)
+    private readonly departmentRepository: Repository<Department>,
+  ) { }
+
+
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    const role = await this.roleRepository.findOne({
+      where: { role_id: createUserDto.role_id },
+    });
+    if (!role) {
+      throw new NotFoundException(`Role with ID ${createUserDto.role_id} not found`);
+    }
+
+    const department = await this.departmentRepository.findOne({
+      where: { department_id: createUserDto.department_id },
+    });
+    if (!department) {
+      throw new NotFoundException(`Department with ID ${createUserDto.department_id} not found`);
+    }
+    // Hash the password before saving
+    const hashedPassword = await encodePassword(createUserDto.password);
+
+    const user = this.userRepository.create({
+      ...createUserDto,
+      password: hashedPassword,
+      role,
+      department,
+    });
+
+    return this.userRepository.save(user);
+  }
+  // async create(createUserDto: CreateUserDto): Promise<User> {
+  //   const role = await this.roleRepository.findOne({ where: { role_id: createUserDto.role_id } });
+  //   if (!role) throw new NotFoundException(`Role with ID ${createUserDto.role_id} not found`);
+
+  //   const department = await this.departmentRepository.findOne({ where: { department_id: createUserDto.department_id } });
+  //   if (!department) throw new NotFoundException(`Department with ID ${createUserDto.department_id} not found`);
+
+  //   // Generate random password (instead of accepting from DTO)
+  //   const rawPassword = generateRandomPassword();
+  //   const hashedPassword = await encodePassword(rawPassword);
+
+  //   const user = this.userRepository.create({
+  //     ...createUserDto,
+  //     password: hashedPassword,
+  //     role,
+  //     department,
+  //   });
+
+  //   const savedUser = await this.userRepository.save(user);
+
+  //   // Send welcome email
+  //   await this.mailService.sendUserCreated(savedUser.email, savedUser.name, rawPassword);
+
+  //   return savedUser;
+  // }
+
+  // async forgotPassword(email: string): Promise<{ message: string }> {
+  //   const user = await this.userRepository.findOne({ where: { email }, relations: ['role', 'department'] });
+  //   if (!user) throw new NotFoundException(`User with email ${email} not found`);
+
+  //   const rawPassword = generateRandomPassword();
+  //   user.password = await encodePassword(rawPassword);
+  //   await this.userRepository.save(user);
+
+  //   // Send reset email
+  //   await this.mailService.sendPasswordReset(user.email, user.name, rawPassword);
+
+  //   return { message: 'Password reset email sent successfully' };
+  // }
+
+  async findAll(): Promise<User[]> {
+    return this.userRepository.find({
+      relations: ['role', 'department'],
+    });
+  }
+
+  async findOne(id: string): Promise<User> {
+    const user = await this.userRepository.findOne({
+      where: { user_id: id },
+      relations: ['role', 'department'],
+    });
+    if (!user) {
+      throw new NotFoundException(`User with ID ${id} not found`);
+    }
+    return user;
+  }
+
+  async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
+    const user = await this.userRepository.preload({
+      user_id: id,
+      ...updateUserDto,
+    });
+    if (!user) {
+      throw new NotFoundException(`User with ID ${id} not found`);
+    }
+
+    if (updateUserDto.role_id) {
+      const role = await this.roleRepository.findOne({
+        where: { role_id: updateUserDto.role_id },
+      });
+      if (!role) {
+        throw new NotFoundException(`Role with ID ${updateUserDto.role_id} not found`);
+      }
+      user.role = role;
+    }
+
+    if (updateUserDto.department_id) {
+      const department = await this.departmentRepository.findOne({
+        where: { department_id: updateUserDto.department_id },
+      });
+      if (!department) {
+        throw new NotFoundException(`Department with ID ${updateUserDto.department_id} not found`);
+      }
+      user.department = department;
+    }
+
+    return this.userRepository.save(user);
+  }
+
+  async remove(id: string): Promise<User> {
+    const user = await this.userRepository.findOne({
+      where: { user_id: id },
+      relations: ['role', 'department'],
+    });
+    if (!user) {
+      throw new NotFoundException(`User with ID ${id} not found`);
+    }
+    await this.userRepository.remove(user);
+    return user;
+  }
+
+  async findByEmail(email: string): Promise<User> {
+    const user = await this.userRepository.findOne({
+      where: { email },
+      relations: ['role', 'department'],
+    });
+    if (!user) {
+      throw new NotFoundException(`User with email ${email} not found`);
+    }
+    return user;
+  }
+
+}
+</file>
+
+<file path="src/utils/bcrypt.ts">
+import * as bcrypt from 'bcrypt';
+
+export async function encodePassword(rawPassword: string) {
+
+    const salt = bcrypt.genSaltSync();
+    return bcrypt.hashSync(rawPassword,salt);
+    
+}
+</file>
+
+<file path="src/utils/password.util.ts">
+export function generateRandomPassword(length = 10) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$!';
+  let password = '';
+  for (let i = 0; i < length; i++) {
+    password += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return password;
+}
+</file>
+
+<file path="test/app.e2e-spec.ts">
+import { Test, TestingModule } from '@nestjs/testing';
+import { INestApplication } from '@nestjs/common';
+import * as request from 'supertest';
+import { App } from 'supertest/types';
+import { AppModule } from './../src/app.module';
+
+describe('AppController (e2e)', () => {
+  let app: INestApplication<App>;
+
+  beforeEach(async () => {
+    const moduleFixture: TestingModule = await Test.createTestingModule({
+      imports: [AppModule],
+    }).compile();
+
+    app = moduleFixture.createNestApplication();
+    await app.init();
+  });
+
+  it('/ (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/')
+      .expect(200)
+      .expect('Hello World!');
+  });
+});
+</file>
+
+<file path="test/jest-e2e.json">
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  }
+}
+</file>
+
+<file path="tsconfig.build.json">
+{
+  "extends": "./tsconfig.json",
+  "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
+}
+</file>
+
+<file path="tsconfig.json">
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "resolvePackageJsonExports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2023",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false
+  }
+}
+</file>
+
+</files>
