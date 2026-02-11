@@ -85,6 +85,7 @@ import {
     @OneToMany(() => Ticket, (ticket) => ticket.manager)
     tickets_managed: Ticket[];
   
+    // issues to be resolved
     @OneToMany(() => TicketAssignment, (assignment) => assignment.assigned_to_user)
     ticket_assignments: TicketAssignment[];
   
@@ -102,4 +103,3 @@ import {
       return new Date() < this.locked_until;
     }
   }
-  
